@@ -20,9 +20,17 @@ PluginSettings {
     }
 
     readonly property string kind: cfg("kind", "default")
+    readonly property string openKind: cfg("openKind", "mirror")
+    readonly property bool anyRandom: kind === "random" || openKind === "random" || (openKind === "mirror" && kind === "random")
 
-    function kindOptions() {
-        const opts = [
+    function kindOptions(withMirror) {
+        const opts = withMirror ? [
+            {
+                label: I18n.trFor("windowFx", "Like closing, backwards"),
+                value: "mirror"
+            }
+        ] : [];
+        opts.push(
             {
                 label: I18n.trFor("windowFx", "niri default"),
                 value: "default"
@@ -31,7 +39,7 @@ PluginSettings {
                 label: I18n.trFor("windowFx", "Random"),
                 value: "random"
             }
-        ];
+        );
         for (let i = 0; i < Kinds.list.length; i++)
             opts.push({
                 label: I18n.trFor("windowFx", Kinds.list[i].label),
@@ -53,7 +61,7 @@ PluginSettings {
         label: I18n.trFor("windowFx", "Close animation")
         description: I18n.trFor("windowFx", "How a window disappears when it is closed.")
         defaultValue: "default"
-        options: root.kindOptions()
+        options: root.kindOptions(false)
     }
 
     SliderSetting {
@@ -66,8 +74,26 @@ PluginSettings {
         unit: "ms"
     }
 
+    SelectionSetting {
+        settingKey: "openKind"
+        label: I18n.trFor("windowFx", "Open animation")
+        description: I18n.trFor("windowFx", "How a new window appears. Plays the kind backwards.")
+        defaultValue: "mirror"
+        options: root.kindOptions(true)
+    }
+
+    SliderSetting {
+        visible: root.openKind !== "default" && !(root.openKind === "mirror" && root.kind === "default")
+        settingKey: "openDuration"
+        label: I18n.trFor("windowFx", "Open duration")
+        defaultValue: 450
+        minimum: 150
+        maximum: 3000
+        unit: "ms"
+    }
+
     ToggleSetting {
-        visible: root.kind !== "default"
+        visible: root.kind !== "default" || root.openKind !== "default"
         settingKey: "glow"
         label: I18n.trFor("windowFx", "Glowing edges")
         description: I18n.trFor("windowFx", "Edges and cracks light up in the accent color.")
@@ -75,7 +101,7 @@ PluginSettings {
     }
 
     StyledText {
-        visible: root.kind === "random"
+        visible: root.anyRandom
         width: parent ? parent.width : implicitWidth
         wrapMode: Text.WordWrap
         text: I18n.trFor("windowFx", "Random picks from these:")
@@ -88,7 +114,7 @@ PluginSettings {
 
         ToggleSetting {
             required property var modelData
-            visible: root.kind === "random"
+            visible: root.anyRandom
             settingKey: "pool_" + modelData.key
             label: I18n.trFor("windowFx", modelData.label)
             defaultValue: modelData.pool

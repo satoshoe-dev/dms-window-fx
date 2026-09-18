@@ -64,5 +64,17 @@
     },
     "Random picks from these:": {
         "Random picks from these:": "Der Zufall wählt aus diesen:"
+    },
+    "Like closing, backwards": {
+        "Like closing, backwards": "Wie beim Schließen, rückwärts"
+    },
+    "Open animation": {
+        "Open animation": "Animation beim Öffnen"
+    },
+    "How a new window appears. Plays the kind backwards.": {
+        "How a new window appears. Plays the kind backwards.": "Wie ein neues Fenster erscheint. Die Art läuft rückwärts ab."
+    },
+    "Open duration": {
+        "Open duration": "Dauer beim Öffnen"
     }
 }

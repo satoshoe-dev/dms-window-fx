@@ -1,6 +1,8 @@
-// WindowFX: close animation for niri, written by the WindowFX plugin.
+// WindowFX: close and open animations for niri, written by the WindowFX plugin.
 //
-// niri runs this over the whole screen while a closed window disappears. The
+// niri runs this over the whole screen while a closed window disappears, or
+// while a new one appears. Opening plays the same kind backwards: the plugin
+// fills in open_color and a reversed progress. The
 // window texture is premultiplied, and so is the result. coords_geo is 0..1
 // inside the window; the shards and the melt may leave the window downwards,
 // every other kind stays inside it.
@@ -77,11 +79,12 @@ float wfxLuma(vec3 c) {
     return dot(c, vec3(0.299, 0.587, 0.114));
 }
 
-vec4 close_color(vec3 coords_geo, vec3 size_geo) {
+vec4 @FUNCTION@(vec3 coords_geo, vec3 size_geo) {
     vec2 uv = coords_geo.xy;
     vec2 px = max(size_geo.xy, vec2(1.0));
     float aspect = px.x / px.y;
-    float p = clamp(niri_clamped_progress, 0.0, 1.0);
+    // 0: window fully there, 1: gone. Opening runs it from 1 to 0.
+    float p = clamp(@PROGRESS@, 0.0, 1.0);
     float z = fract(niri_random_seed * 7.137 + 0.31);
     int kind = wfxKind;
     if (kind == 0)

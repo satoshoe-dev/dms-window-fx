@@ -1,16 +1,17 @@
-// Window FX: close animations for single windows.
+// Window FX: close and open animations for single windows.
 //
-// niri draws closing windows with a custom shader if the config has one. The
-// plugin fills shaders/close.glsl with the chosen kind, the accent color and
-// the random pool, and writes the result to ~/.config/niri/windowfx.kdl. niri
+// niri draws closing and opening windows with a custom shader if the config
+// has one. The plugin fills shaders/window.glsl with the chosen kind, the
+// accent color and the random pool, and writes the result to
+// ~/.config/niri/windowfx.kdl. Opening plays a kind backwards. niri
 // watches included files and reloads on its own, so a change takes effect with
 // the next window that closes.
 //
 // The main niri config needs one line at its end (see README):
 //     include optional=true "windowfx.kdl"
 //
-// "default" writes a file without an animation block, so niri falls back to
-// whatever the main config says.
+// "default" leaves the block out, so niri falls back to whatever the main
+// config says.
 
 pragma ComponentBehavior: Bound
 
@@ -36,6 +37,15 @@ PluginComponent {
     readonly property string kind: {
         root._settings;
         return cfg("kind", "default");
+    }
+    // "mirror" (the close kind, backwards), "default", "random" or a key
+    readonly property string openKind: {
+        root._settings;
+        return cfg("openKind", "mirror");
+    }
+    readonly property int openDuration: {
+        root._settings;
+        return Math.max(150, Math.min(3000, cfg("openDuration", 450)));
     }
     readonly property int duration: {
         root._settings;
@@ -74,32 +84,46 @@ PluginComponent {
         return lines.join("\n");
     }
 
-    function build() {
-        const head = "// Written by the Window FX plugin (DMS). Changes here are overwritten.\n";
-        if (root.kind === "default")
-            return head + "// Close animation: niri default.\n";
+    function shader(kind, fn, progress) {
         const template = shaderFile.text();
         if (!template)
             return "";
         let id = 0;
-        if (root.kind !== "random") {
-            const k = Kinds.byKey(root.kind);
+        if (kind !== "random") {
+            const k = Kinds.byKey(kind);
             id = k ? k.id : 1;
         }
         const c = root.accent;
-        const shader = template
+        return template
             .replace("@KIND@", String(id))
             .replace("@GLOW@", root.glow ? "1.0" : "0.0")
             .replace("@ACCENT@", num(c.r) + ", " + num(c.g) + ", " + num(c.b))
-            .replace("@PICK@", pickCode(root.pool));
-        return head
-            + "animations {\n"
-            + "    window-close {\n"
-            + "        duration-ms " + root.duration + "\n"
+            .replace("@PICK@", pickCode(root.pool))
+            .replace("@FUNCTION@", fn)
+            .replace("@PROGRESS@", progress);
+    }
+
+    function block(name, ms, code) {
+        return "    " + name + " {\n"
+            + "        duration-ms " + ms + "\n"
             + "        curve \"linear\"\n"
-            + "        custom-shader r#\"\n" + shader + "\n\"#\n"
-            + "    }\n"
-            + "}\n";
+            + "        custom-shader r#\"\n" + code + "\n\"#\n"
+            + "    }\n";
+    }
+
+    function build() {
+        const head = "// Written by the Window FX plugin (DMS). Changes here are overwritten.\n";
+        if (!shaderFile.text())
+            return "";
+        const openKind = root.openKind === "mirror" ? root.kind : root.openKind;
+        let body = "";
+        if (root.kind !== "default")
+            body += block("window-close", root.duration, shader(root.kind, "close_color", "niri_clamped_progress"));
+        if (openKind !== "default")
+            body += block("window-open", root.openDuration, shader(openKind, "open_color", "1.0 - niri_clamped_progress"));
+        if (!body)
+            return head + "// Open and close animations: niri default.\n";
+        return head + "animations {\n" + body + "}\n";
     }
 
     function write() {
@@ -118,6 +142,8 @@ PluginComponent {
     }
 
     onKindChanged: writeLater.restart()
+    onOpenKindChanged: writeLater.restart()
+    onOpenDurationChanged: writeLater.restart()
     onDurationChanged: writeLater.restart()
     onGlowChanged: writeLater.restart()
     onPoolChanged: writeLater.restart()
@@ -125,7 +151,7 @@ PluginComponent {
 
     FileView {
         id: shaderFile
-        path: String(Qt.resolvedUrl("shaders/close.glsl")).replace(/^file:\/\//, "")
+        path: String(Qt.resolvedUrl("shaders/window.glsl")).replace(/^file:\/\//, "")
         blockLoading: true
         onLoaded: writeLater.restart()
     }
@@ -151,8 +177,16 @@ PluginComponent {
             return name;
         }
 
+        // dms ipc call windowFx open mirror   (or default, random, a kind)
+        function open(name: string): string {
+            if (name !== "default" && name !== "random" && name !== "mirror" && !Kinds.byKey(name))
+                return "unknown kind: " + name;
+            SettingsData.setPluginSetting("windowFx", "openKind", name);
+            return name;
+        }
+
         function status(): string {
-            return root.kind + ", " + root.duration + " ms, glow " + (root.glow ? "on" : "off") + ", pool " + root.pool.join(",");
+            return "close " + root.kind + " " + root.duration + " ms, open " + root.openKind + " " + root.openDuration + " ms, glow " + (root.glow ? "on" : "off") + ", pool " + root.pool.join(",");
         }
     }
 }

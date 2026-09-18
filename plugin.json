@@ -1,7 +1,7 @@
 {
     "id": "windowFx",
     "name": "Window FX",
-    "description": "Close animations for single windows on niri: ember, shatter, melt, glitch and more, with the accent color as glowing edge",
+    "description": "Close and open animations for single windows on niri: ember, shatter, melt, glitch and more, with the accent color as glowing edge",
     "version": "0.1.0",
     "author": "satoshoe",
     "type": "daemon",

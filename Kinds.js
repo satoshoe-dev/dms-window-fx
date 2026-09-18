@@ -1,6 +1,6 @@
 .pragma library
 
-// Close animations, numbered as in shaders/close.glsl. "pool" is the default
+// Animations, numbered as in shaders/window.glsl. "pool" is the default
 // for the random mode.
 var list = [
     { id: 1, key: "ember", label: "Ember", pool: true },
