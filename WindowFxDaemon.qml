@@ -164,10 +164,9 @@ PluginComponent {
     Process {
         id: holdProbe
         command: ["sh", "-c", "f=$(mktemp --suffix=.kdl) && printf 'animations {\\n    window-close {\\n        hold-layout\\n    }\\n}\\n' > \"$f\" && niri validate -c \"$f\" >/dev/null 2>&1; r=$?; rm -f \"$f\"; exit $r"]
-        onExited: code => {
-            root.holdSupported = code === 0;
-            SettingsData.setPluginSetting("windowFx", "holdSupported", code === 0);
-        }
+        // Not a plugin setting: profiles save all settings of the plugin, and a
+        // stored answer would outlive the niri it was measured on.
+        onExited: code => root.holdSupported = code === 0
     }
 
     FileView {

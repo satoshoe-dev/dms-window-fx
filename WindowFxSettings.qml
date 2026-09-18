@@ -3,6 +3,7 @@
 pragma ComponentBehavior: Bound
 
 import QtQuick
+import Quickshell.Io
 import qs.Common
 import qs.Services
 import qs.Modules.Plugins
@@ -20,6 +21,13 @@ PluginSettings {
     }
 
     readonly property string kind: cfg("kind", "default")
+    // Same check as the daemon: does the installed niri know hold-layout?
+    property bool holdSupported: false
+    Process {
+        running: true
+        command: ["sh", "-c", "f=$(mktemp --suffix=.kdl) && printf 'animations {\\n    window-close {\\n        hold-layout\\n    }\\n}\\n' > \"$f\" && niri validate -c \"$f\" >/dev/null 2>&1; r=$?; rm -f \"$f\"; exit $r"]
+        onExited: code => root.holdSupported = code === 0
+    }
     readonly property string openKind: cfg("openKind", "mirror")
     readonly property bool anyRandom: kind === "random" || openKind === "random" || (openKind === "mirror" && kind === "random")
 
@@ -75,7 +83,7 @@ PluginSettings {
     }
 
     ToggleSetting {
-        visible: root.kind !== "default" && root.cfg("holdSupported", false)
+        visible: root.kind !== "default" && root.holdSupported
         settingKey: "holdLayout"
         label: I18n.trFor("windowFx", "Neighbours wait")
         description: I18n.trFor("windowFx", "The windows around move into the gap only after the animation. Needs a niri with hold-layout.")
