@@ -76,5 +76,11 @@
     },
     "Open duration": {
         "Open duration": "Dauer beim Öffnen"
+    },
+    "Neighbours wait": {
+        "Neighbours wait": "Nachbarn warten"
+    },
+    "The windows around move into the gap only after the animation. Needs a niri with hold-layout.": {
+        "The windows around move into the gap only after the animation. Needs a niri with hold-layout.": "Die Fenster daneben rücken erst nach der Animation in die Lücke. Braucht ein niri mit hold-layout."
     }
 }

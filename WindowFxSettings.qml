@@ -74,6 +74,14 @@ PluginSettings {
         unit: "ms"
     }
 
+    ToggleSetting {
+        visible: root.kind !== "default" && root.cfg("holdSupported", false)
+        settingKey: "holdLayout"
+        label: I18n.trFor("windowFx", "Neighbours wait")
+        description: I18n.trFor("windowFx", "The windows around move into the gap only after the animation. Needs a niri with hold-layout.")
+        defaultValue: false
+    }
+
     SelectionSetting {
         settingKey: "openKind"
         label: I18n.trFor("windowFx", "Open animation")

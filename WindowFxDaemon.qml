@@ -66,6 +66,13 @@ PluginComponent {
         return ids;
     }
     readonly property color accent: Theme.primary
+    // Neighbours wait for the close animation. Needs a niri that knows
+    // `hold-layout` (own patch); a stock niri would reject the whole file.
+    readonly property bool holdLayout: {
+        root._settings;
+        return cfg("holdLayout", false);
+    }
+    property bool holdSupported: false
 
     readonly property string targetPath: Quickshell.env("HOME") + "/.config/niri/windowfx.kdl"
     property string lastWritten: ""
@@ -103,10 +110,11 @@ PluginComponent {
             .replace("@PROGRESS@", progress);
     }
 
-    function block(name, ms, code) {
+    function block(name, ms, code, extra) {
         return "    " + name + " {\n"
             + "        duration-ms " + ms + "\n"
             + "        curve \"linear\"\n"
+            + (extra || "")
             + "        custom-shader r#\"\n" + code + "\n\"#\n"
             + "    }\n";
     }
@@ -118,7 +126,8 @@ PluginComponent {
         const openKind = root.openKind === "mirror" ? root.kind : root.openKind;
         let body = "";
         if (root.kind !== "default")
-            body += block("window-close", root.duration, shader(root.kind, "close_color", "niri_clamped_progress"));
+            body += block("window-close", root.duration, shader(root.kind, "close_color", "niri_clamped_progress"),
+                root.holdLayout && root.holdSupported ? "        hold-layout\n" : "");
         if (openKind !== "default")
             body += block("window-open", root.openDuration, shader(openKind, "open_color", "1.0 - niri_clamped_progress"));
         if (!body)
@@ -148,6 +157,18 @@ PluginComponent {
     onGlowChanged: writeLater.restart()
     onPoolChanged: writeLater.restart()
     onAccentChanged: writeLater.restart()
+    onHoldLayoutChanged: writeLater.restart()
+    onHoldSupportedChanged: writeLater.restart()
+
+    // Does the installed niri know hold-layout? Validate a tiny config with it.
+    Process {
+        id: holdProbe
+        command: ["sh", "-c", "f=$(mktemp --suffix=.kdl) && printf 'animations {\\n    window-close {\\n        hold-layout\\n    }\\n}\\n' > \"$f\" && niri validate -c \"$f\" >/dev/null 2>&1; r=$?; rm -f \"$f\"; exit $r"]
+        onExited: code => {
+            root.holdSupported = code === 0;
+            SettingsData.setPluginSetting("windowFx", "holdSupported", code === 0);
+        }
+    }
 
     FileView {
         id: shaderFile
@@ -164,7 +185,10 @@ PluginComponent {
         onLoaded: root.lastWritten = text()
     }
 
-    Component.onCompleted: writeLater.restart()
+    Component.onCompleted: {
+        holdProbe.running = true;
+        writeLater.restart();
+    }
 
     IpcHandler {
         target: "windowFx"
