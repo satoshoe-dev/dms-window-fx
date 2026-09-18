@@ -1,0 +1,86 @@
+{
+    "niri default": {
+        "niri default": "Predeterminado de niri"
+    },
+    "Random": {
+        "Random": "Aleatorio"
+    },
+    "Ember": {
+        "Ember": "Brasas"
+    },
+    "Dissolve": {
+        "Dissolve": "Disolver"
+    },
+    "Pixelate": {
+        "Pixelate": "Pixelar"
+    },
+    "Shatter": {
+        "Shatter": "Añicos"
+    },
+    "Melt": {
+        "Melt": "Derretir"
+    },
+    "Glitch": {
+        "Glitch": "Fallo de señal"
+    },
+    "Tube off": {
+        "Tube off": "Tubo apagado"
+    },
+    "Snowstorm": {
+        "Snowstorm": "Nieve"
+    },
+    "Scan": {
+        "Scan": "Escaneo"
+    },
+    "Code rain": {
+        "Code rain": "Lluvia de código"
+    },
+    "Swirl": {
+        "Swirl": "Remolino"
+    },
+    "Squares": {
+        "Squares": "Cuadros"
+    },
+    "Blinds": {
+        "Blinds": "Persiana"
+    },
+    "Needs this line at the end of ~/.config/niri/config.kdl:": {
+        "Needs this line at the end of ~/.config/niri/config.kdl:": "Necesita esta línea al final de ~/.config/niri/config.kdl:"
+    },
+    "Close animation": {
+        "Close animation": "Animación al cerrar"
+    },
+    "How a window disappears when it is closed.": {
+        "How a window disappears when it is closed.": "Cómo desaparece una ventana al cerrarla."
+    },
+    "Duration": {
+        "Duration": "Duración"
+    },
+    "Glowing edges": {
+        "Glowing edges": "Bordes luminosos"
+    },
+    "Edges and cracks light up in the accent color.": {
+        "Edges and cracks light up in the accent color.": "Los bordes y las grietas se iluminan en el color de acento."
+    },
+    "Random picks from these:": {
+        "Random picks from these:": "El modo aleatorio elige entre estos:"
+    },
+    "Like closing, backwards": {
+        "Like closing, backwards": "Como al cerrar, al revés"
+    },
+    "Open animation": {
+        "Open animation": "Animación al abrir"
+    },
+    "How a new window appears. Plays the kind backwards.": {
+        "How a new window appears. Plays the kind backwards.": "Cómo aparece una ventana nueva. Reproduce el tipo al revés."
+    },
+    "Open duration": {
+        "Open duration": "Duración al abrir"
+    },
+    "Neighbours wait": {
+        "Neighbours wait": "Las vecinas esperan"
+    },
+    "The windows around move into the gap only after the animation. Needs a niri with hold-layout.": {
+        "The windows around move into the gap only after the animation. Needs a niri with hold-layout.": "Las ventanas de alrededor ocupan el hueco solo después de la animación. Necesita un niri con hold-layout."
+    }
+}

@@ -1,0 +1,86 @@
+{
+    "niri default": {
+        "niri default": "niri 默认"
+    },
+    "Random": {
+        "Random": "随机"
+    },
+    "Ember": {
+        "Ember": "余烬"
+    },
+    "Dissolve": {
+        "Dissolve": "溶解"
+    },
+    "Pixelate": {
+        "Pixelate": "像素化"
+    },
+    "Shatter": {
+        "Shatter": "碎裂"
+    },
+    "Melt": {
+        "Melt": "融化"
+    },
+    "Glitch": {
+        "Glitch": "故障"
+    },
+    "Tube off": {
+        "Tube off": "显像管关机"
+    },
+    "Snowstorm": {
+        "Snowstorm": "雪花屏"
+    },
+    "Scan": {
+        "Scan": "扫描"
+    },
+    "Code rain": {
+        "Code rain": "代码雨"
+    },
+    "Swirl": {
+        "Swirl": "漩涡"
+    },
+    "Squares": {
+        "Squares": "方块"
+    },
+    "Blinds": {
+        "Blinds": "百叶窗"
+    },
+    "Needs this line at the end of ~/.config/niri/config.kdl:": {
+        "Needs this line at the end of ~/.config/niri/config.kdl:": "需要在 ~/.config/niri/config.kdl 的末尾加上这一行:"
+    },
+    "Close animation": {
+        "Close animation": "关闭动画"
+    },
+    "How a window disappears when it is closed.": {
+        "How a window disappears when it is closed.": "窗口关闭时怎样消失。"
+    },
+    "Duration": {
+        "Duration": "时长"
+    },
+    "Glowing edges": {
+        "Glowing edges": "发光边缘"
+    },
+    "Edges and cracks light up in the accent color.": {
+        "Edges and cracks light up in the accent color.": "边缘和裂缝以强调色发光。"
+    },
+    "Random picks from these:": {
+        "Random picks from these:": "随机从这些里面选:"
+    },
+    "Like closing, backwards": {
+        "Like closing, backwards": "和关闭一样，倒着放"
+    },
+    "Open animation": {
+        "Open animation": "打开动画"
+    },
+    "How a new window appears. Plays the kind backwards.": {
+        "How a new window appears. Plays the kind backwards.": "新窗口怎样出现。把所选效果倒着播放。"
+    },
+    "Open duration": {
+        "Open duration": "打开时长"
+    },
+    "Neighbours wait": {
+        "Neighbours wait": "相邻窗口等待"
+    },
+    "The windows around move into the gap only after the animation. Needs a niri with hold-layout.": {
+        "The windows around move into the gap only after the animation. Needs a niri with hold-layout.": "周围的窗口等动画结束后才移进空位。需要带 hold-layout 的 niri。"
+    }
+}

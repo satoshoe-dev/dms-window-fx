@@ -1,0 +1,86 @@
+{
+    "niri default": {
+        "niri default": "Стандарт niri"
+    },
+    "Random": {
+        "Random": "Случайно"
+    },
+    "Ember": {
+        "Ember": "Тление"
+    },
+    "Dissolve": {
+        "Dissolve": "Распад"
+    },
+    "Pixelate": {
+        "Pixelate": "Пикселизация"
+    },
+    "Shatter": {
+        "Shatter": "Осколки"
+    },
+    "Melt": {
+        "Melt": "Таяние"
+    },
+    "Glitch": {
+        "Glitch": "Сбой сигнала"
+    },
+    "Tube off": {
+        "Tube off": "Кинескоп гаснет"
+    },
+    "Snowstorm": {
+        "Snowstorm": "Снежная буря"
+    },
+    "Scan": {
+        "Scan": "Скан"
+    },
+    "Code rain": {
+        "Code rain": "Дождь из кода"
+    },
+    "Swirl": {
+        "Swirl": "Водоворот"
+    },
+    "Squares": {
+        "Squares": "Плитки"
+    },
+    "Blinds": {
+        "Blinds": "Жалюзи"
+    },
+    "Needs this line at the end of ~/.config/niri/config.kdl:": {
+        "Needs this line at the end of ~/.config/niri/config.kdl:": "Нужна эта строка в конце ~/.config/niri/config.kdl:"
+    },
+    "Close animation": {
+        "Close animation": "Анимация закрытия"
+    },
+    "How a window disappears when it is closed.": {
+        "How a window disappears when it is closed.": "Как окно исчезает, когда его закрывают."
+    },
+    "Duration": {
+        "Duration": "Длительность"
+    },
+    "Glowing edges": {
+        "Glowing edges": "Светящиеся края"
+    },
+    "Edges and cracks light up in the accent color.": {
+        "Edges and cracks light up in the accent color.": "Края и трещины светятся акцентным цветом."
+    },
+    "Random picks from these:": {
+        "Random picks from these:": "Случайный выбор идёт из этих:"
+    },
+    "Like closing, backwards": {
+        "Like closing, backwards": "Как при закрытии, в обратную сторону"
+    },
+    "Open animation": {
+        "Open animation": "Анимация открытия"
+    },
+    "How a new window appears. Plays the kind backwards.": {
+        "How a new window appears. Plays the kind backwards.": "Как появляется новое окно. Эффект проигрывается в обратную сторону."
+    },
+    "Open duration": {
+        "Open duration": "Длительность открытия"
+    },
+    "Neighbours wait": {
+        "Neighbours wait": "Соседи ждут"
+    },
+    "The windows around move into the gap only after the animation. Needs a niri with hold-layout.": {
+        "The windows around move into the gap only after the animation. Needs a niri with hold-layout.": "Соседние окна сдвигаются в освободившееся место только после анимации. Нужен niri с hold-layout."
+    }
+}

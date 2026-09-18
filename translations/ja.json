@@ -1,0 +1,86 @@
+{
+    "niri default": {
+        "niri default": "niri の標準"
+    },
+    "Random": {
+        "Random": "ランダム"
+    },
+    "Ember": {
+        "Ember": "燃えさし"
+    },
+    "Dissolve": {
+        "Dissolve": "崩れる"
+    },
+    "Pixelate": {
+        "Pixelate": "ピクセル化"
+    },
+    "Shatter": {
+        "Shatter": "砕ける"
+    },
+    "Melt": {
+        "Melt": "溶ける"
+    },
+    "Glitch": {
+        "Glitch": "グリッチ"
+    },
+    "Tube off": {
+        "Tube off": "ブラウン管オフ"
+    },
+    "Snowstorm": {
+        "Snowstorm": "砂嵐"
+    },
+    "Scan": {
+        "Scan": "スキャン"
+    },
+    "Code rain": {
+        "Code rain": "コードの雨"
+    },
+    "Swirl": {
+        "Swirl": "渦巻き"
+    },
+    "Squares": {
+        "Squares": "タイル"
+    },
+    "Blinds": {
+        "Blinds": "ブラインド"
+    },
+    "Needs this line at the end of ~/.config/niri/config.kdl:": {
+        "Needs this line at the end of ~/.config/niri/config.kdl:": "~/.config/niri/config.kdl の末尾に次の行が必要です:"
+    },
+    "Close animation": {
+        "Close animation": "閉じるときのアニメーション"
+    },
+    "How a window disappears when it is closed.": {
+        "How a window disappears when it is closed.": "ウィンドウを閉じたときの消え方です。"
+    },
+    "Duration": {
+        "Duration": "長さ"
+    },
+    "Glowing edges": {
+        "Glowing edges": "光るふち"
+    },
+    "Edges and cracks light up in the accent color.": {
+        "Edges and cracks light up in the accent color.": "ふちや割れ目がアクセントカラーで光ります。"
+    },
+    "Random picks from these:": {
+        "Random picks from these:": "ランダムはこの中から選びます:"
+    },
+    "Like closing, backwards": {
+        "Like closing, backwards": "閉じるときと同じ、逆再生"
+    },
+    "Open animation": {
+        "Open animation": "開くときのアニメーション"
+    },
+    "How a new window appears. Plays the kind backwards.": {
+        "How a new window appears. Plays the kind backwards.": "新しいウィンドウの現れ方です。種類を逆向きに再生します。"
+    },
+    "Open duration": {
+        "Open duration": "開くときの長さ"
+    },
+    "Neighbours wait": {
+        "Neighbours wait": "隣のウィンドウを待たせる"
+    },
+    "The windows around move into the gap only after the animation. Needs a niri with hold-layout.": {
+        "The windows around move into the gap only after the animation. Needs a niri with hold-layout.": "まわりのウィンドウは、アニメーションが終わってから空いた場所に詰めます。hold-layout のある niri が必要です。"
+    }
+}
