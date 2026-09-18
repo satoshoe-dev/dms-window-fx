@@ -1,0 +1,68 @@
+{
+    "niri default": {
+        "niri default": "niri-Standard"
+    },
+    "Random": {
+        "Random": "Zufall"
+    },
+    "Ember": {
+        "Ember": "Glut"
+    },
+    "Dissolve": {
+        "Dissolve": "Zerfall"
+    },
+    "Pixelate": {
+        "Pixelate": "Verpixeln"
+    },
+    "Shatter": {
+        "Shatter": "Scherben"
+    },
+    "Melt": {
+        "Melt": "Schmelzen"
+    },
+    "Glitch": {
+        "Glitch": "Signalstörung"
+    },
+    "Tube off": {
+        "Tube off": "Röhre aus"
+    },
+    "Snowstorm": {
+        "Snowstorm": "Schneesturm"
+    },
+    "Scan": {
+        "Scan": "Scan"
+    },
+    "Code rain": {
+        "Code rain": "Code-Regen"
+    },
+    "Swirl": {
+        "Swirl": "Strudel"
+    },
+    "Squares": {
+        "Squares": "Kacheln"
+    },
+    "Blinds": {
+        "Blinds": "Jalousie"
+    },
+    "Needs this line at the end of ~/.config/niri/config.kdl:": {
+        "Needs this line at the end of ~/.config/niri/config.kdl:": "Braucht diese Zeile am Ende von ~/.config/niri/config.kdl:"
+    },
+    "Close animation": {
+        "Close animation": "Animation beim Schließen"
+    },
+    "How a window disappears when it is closed.": {
+        "How a window disappears when it is closed.": "Wie ein Fenster verschwindet, wenn es geschlossen wird."
+    },
+    "Duration": {
+        "Duration": "Dauer"
+    },
+    "Glowing edges": {
+        "Glowing edges": "Leuchtende Kanten"
+    },
+    "Edges and cracks light up in the accent color.": {
+        "Edges and cracks light up in the accent color.": "Kanten und Risse leuchten in der Akzentfarbe."
+    },
+    "Random picks from these:": {
+        "Random picks from these:": "Der Zufall wählt aus diesen:"
+    }
+}
