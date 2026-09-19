@@ -108,6 +108,8 @@ Quand une fenêtre se ferme, niri la retire aussitôt de la disposition. Les fen
 
 J’ai écrit un petit patch pour niri qui ajoute l’option `hold-layout` à `window-close`. Avec elle, tout ce que le retrait met en mouvement (les voisines qui glissent, la vue qui défile, les colonnes qui changent de taille) ne démarre qu’une fois l’animation de fermeture terminée. Le patch ne fait pas partie de niri, et le niri de votre distribution ne connaît pas l’option. Sans un niri compilé avec ce patch, « Les voisines attendent » n’a aucun effet.
 
+Le patch pour niri 26.04 se trouve dans la branche [hold-layout-v26.04](https://github.com/satoshoe-dev/niri/tree/hold-layout-v26.04) de mon fork de niri. Il se compile comme niri lui-même, voir son README.
+
 Au démarrage, le plugin vérifie si le niri installé connaît l’option, en faisant lire à `niri validate` un petit fichier qui l’utilise. Si niri la connaît, l’interrupteur « Les voisines attendent » apparaît dans la page de paramètres ; sinon il reste caché et le plugin n’écrit jamais l’option, parce qu’un niri d’origine rejetterait tout le fichier.
 
 ## Le désactiver

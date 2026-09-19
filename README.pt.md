@@ -108,6 +108,8 @@ Quando uma janela fecha, o niri a tira imediatamente do layout. As janelas ao la
 
 Escrevi um pequeno patch para o niri que acrescenta a opção `hold-layout` a `window-close`. Com ela, tudo o que a remoção coloca em movimento (as vizinhas que deslizam, a visualização que rola, as colunas que mudam de tamanho) só começa depois que a animação de fechamento termina. O patch não faz parte do niri, e o niri da sua distribuição não conhece a opção. Sem um niri compilado com esse patch, "As vizinhas esperam" não tem efeito.
 
+O patch para o niri 26.04 está no branch [hold-layout-v26.04](https://github.com/satoshoe-dev/niri/tree/hold-layout-v26.04) do meu fork do niri. Ele é compilado como o próprio niri, veja o README dele.
+
 Ao iniciar, o plugin verifica se o niri instalado conhece a opção, fazendo o `niri validate` ler um arquivo minúsculo que a usa. Se o niri a conhecer, o interruptor "As vizinhas esperam" aparece na página de configurações; se não, ele fica escondido e o plugin nunca escreve a opção, porque um niri sem o patch rejeitaria o arquivo inteiro.
 
 ## Desativar

@@ -108,6 +108,8 @@ Wenn ein Fenster sich schließt, nimmt niri es sofort aus dem Layout. Die Fenste
 
 Ich habe dafür einen kleinen Patch für niri geschrieben, der `window-close` um die Option `hold-layout` ergänzt. Mit ihr beginnt alles, was das Entfernen in Gang setzt (Nachbarn rücken nach, die Ansicht scrollt, Spalten ändern ihre Größe), erst dann, wenn die Schließ-Animation zu Ende ist. Der Patch gehört nicht zu niri, und das niri deiner Distribution kennt die Option nicht. Ohne ein niri, das mit diesem Patch gebaut ist, bewirkt „Nachbarn warten“ nichts.
 
+Der Patch für niri 26.04 liegt im Zweig [hold-layout-v26.04](https://github.com/satoshoe-dev/niri/tree/hold-layout-v26.04) meines niri-Forks. Gebaut wird er wie niri selbst, siehe dessen README.
+
 Das Plugin prüft beim Start, ob das installierte niri die Option kennt: es lässt `niri validate` eine winzige Datei lesen, die sie benutzt. Kennt niri sie, erscheint auf der Einstellungsseite der Schalter „Nachbarn warten“; sonst bleibt er verborgen und das Plugin schreibt die Option nie, weil ein unverändertes niri die ganze Datei ablehnen würde.
 
 ## Abschalten

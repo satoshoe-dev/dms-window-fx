@@ -108,6 +108,8 @@ When a window closes, niri takes it out of the layout right away. The windows ne
 
 I wrote a small patch for niri that adds the option `hold-layout` to `window-close`. With it, everything the removal sets in motion (neighbours sliding in, the view scrolling, columns resizing) starts only when the close animation has ended. The patch is not part of niri, and the niri from your distribution does not know the option. Without a niri built with this patch, "Neighbours wait" has no effect.
 
+The patch against niri 26.04 is in the branch [hold-layout-v26.04](https://github.com/satoshoe-dev/niri/tree/hold-layout-v26.04) of my niri fork. It builds like niri itself, see the niri README.
+
 The plugin checks at start whether the installed niri knows the option, by letting `niri validate` read a tiny file that uses it. If niri knows it, the switch "Neighbours wait" appears on the settings page; if not, it stays hidden and the plugin never writes the option, because a stock niri would reject the whole file.
 
 ## Switching it off

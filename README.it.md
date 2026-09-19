@@ -108,6 +108,8 @@ Quando una finestra si chiude, niri la toglie subito dal layout. Le finestre acc
 
 Ho scritto una piccola patch per niri che aggiunge l'opzione `hold-layout` a `window-close`. Con essa, tutto ciò che la rimozione mette in moto (le vicine che scivolano, la vista che scorre, le colonne che cambiano misura) parte solo quando l'animazione di chiusura è finita. La patch non fa parte di niri, e il niri della tua distribuzione non conosce l'opzione. Senza un niri compilato con questa patch, "Le vicine aspettano" non ha effetto.
 
+La patch per niri 26.04 si trova nel ramo [hold-layout-v26.04](https://github.com/satoshoe-dev/niri/tree/hold-layout-v26.04) del mio fork di niri. Si compila come niri stesso, vedi il suo README.
+
 All'avvio il plugin controlla se il niri installato conosce l'opzione, facendo leggere a `niri validate` un file minuscolo che la usa. Se niri la conosce, nella pagina delle impostazioni compare l'interruttore "Le vicine aspettano"; altrimenti resta nascosto e il plugin non scrive mai l'opzione, perché un niri standard rifiuterebbe l'intero file.
 
 ## Spegnerlo

@@ -108,6 +108,8 @@ binds {
 
 为此我给 niri 写了一个小补丁，在 `window-close` 里加入选项 `hold-layout`。有了它，移除窗口所引起的一切 (相邻窗口移进来、视图滚动、列改变大小) 都要等关闭动画结束后才开始。这个补丁不属于 niri，发行版里的 niri 不认识这个选项。没有用这个补丁编译的 niri，“相邻窗口等待”就不起作用。
 
+针对 niri 26.04 的补丁位于我的 niri 复刻仓库的 [hold-layout-v26.04](https://github.com/satoshoe-dev/niri/tree/hold-layout-v26.04) 分支。构建方式与 niri 本身相同，参见其 README。
+
 插件启动时会检查装着的 niri 是否认识这个选项，做法是让 `niri validate` 读一个用了这个选项的小文件。如果认识，设置页面上就会出现“相邻窗口等待”这个开关；如果不认识，开关就一直隐藏，插件也从不写这个选项，因为原版 niri 会拒绝整个文件。
 
 ## 关掉插件
