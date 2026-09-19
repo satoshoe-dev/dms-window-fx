@@ -22,7 +22,7 @@ git clone https://github.com/satoshoe-dev/dms-window-fx ~/.config/DankMaterialSh
 
 ![Список плагинов с Window FX](images/01-plugin-list.png)
 
-Если его там нет, нажмите «Scan» на этой странице или перезапустите оболочку командой `dms restart`.
+Если его там нет, нажмите «Сканировать» на этой странице или перезапустите оболочку командой `dms restart`.
 
 ## 3. Дать niri прочитать файл плагина
 

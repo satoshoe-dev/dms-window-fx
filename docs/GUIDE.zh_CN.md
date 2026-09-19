@@ -22,7 +22,7 @@ git clone https://github.com/satoshoe-dev/dms-window-fx ~/.config/DankMaterialSh
 
 ![插件列表里的 Window FX](images/01-plugin-list.png)
 
-如果没出现，点这个页面上的“Scan”，或者用 `dms restart` 重启 shell。
+如果没出现，点这个页面上的“扫描”，或者用 `dms restart` 重启 shell。
 
 ## 3. 让 niri 读取插件的文件
 

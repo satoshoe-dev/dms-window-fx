@@ -22,7 +22,7 @@ git clone https://github.com/satoshoe-dev/dms-window-fx ~/.config/DankMaterialSh
 
 ![Plugin-Liste mit Window FX](images/01-plugin-list.png)
 
-Wenn es nicht auftaucht, klick auf dieser Seite auf „Scan“ oder starte die Shell mit `dms restart` neu.
+Wenn es nicht auftaucht, klick auf dieser Seite auf „Scannen“ oder starte die Shell mit `dms restart` neu.
 
 ## 3. niri die Datei des Plugins lesen lassen
 

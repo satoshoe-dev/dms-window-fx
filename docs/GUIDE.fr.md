@@ -10,79 +10,79 @@ Depuis le registre des plugins :
 dms plugins install windowFx
 ```
 
-Ou clone le dépôt dans ton dossier de plugins DMS :
+Ou clonez le dépôt dans votre dossier de plugins DMS :
 
 ```sh
 git clone https://github.com/satoshoe-dev/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
 ```
 
-## 2. L'activer
+## 2. L’activer
 
-Ouvre Paramètres → Plugins. Window FX apparaît dans la liste. Active-le.
+Ouvrez Paramètres → Plugins. Window FX apparaît dans la liste. Activez-le.
 
 ![Liste des plugins avec Window FX](images/01-plugin-list.png)
 
-S'il n'apparaît pas, clique sur « Scan » sur cette page ou redémarre le shell avec `dms restart`.
+S’il n’apparaît pas, cliquez sur « Scanner » sur cette page ou redémarrez le shell avec `dms restart`.
 
 ## 3. Faire lire à niri le fichier du plugin
 
-Le plugin écrit ses animations dans `~/.config/niri/windowfx.kdl`. niri ne lit ce fichier que si ta configuration l'inclut. Ajoute cette ligne tout à la fin de `~/.config/niri/config.kdl` :
+Le plugin écrit ses animations dans `~/.config/niri/windowfx.kdl`. niri ne lit ce fichier que si votre configuration l’inclut. Ajoutez cette ligne tout à la fin de `~/.config/niri/config.kdl` :
 
 ```kdl
 include optional=true "windowfx.kdl"
 ```
 
-Elle va à la fin parce qu'un include remplace ce qui vient avant lui. Si ta configuration a son propre bloc `animations` avec `window-close` ou `window-open`, ce sont alors les valeurs du plugin qui l'emportent. `optional=true` évite une erreur tant que le fichier n'existe pas encore ; il faut niri 26.04 ou plus récent.
+Elle va à la fin parce qu’un include remplace ce qui vient avant lui. Si votre configuration a son propre bloc `animations` avec `window-close` ou `window-open`, ce sont alors les valeurs du plugin qui l’emportent. `optional=true` évite une erreur tant que le fichier n’existe pas encore ; il faut niri 26.04 ou plus récent.
 
-niri prend la modification en compte dès que tu enregistres le fichier.
+niri prend la modification en compte dès que vous enregistrez le fichier.
 
 ## 4. Choisir une animation de fermeture
 
-Déplie Window FX dans la liste des plugins. Sous « Animation de fermeture », choisis l'une des 13 animations, par exemple Éclats.
+Dépliez Window FX dans la liste des plugins. Sous « Animation de fermeture », choisissez l’une des 13 animations, par exemple Éclats.
 
 ![La page de paramètres avec la liste des animations](images/02-close-animation.png)
 
-Ouvre un terminal et referme-le. La fenêtre se brise en éclats qui tournent et tombent hors du cadre.
+Ouvrez un terminal et refermez-le. La fenêtre se brise en éclats qui tournent et tombent hors du cadre.
 
 ![Une fenêtre qui se brise en éclats](images/03-shatter.png)
 
-« Durée » règle combien de temps ça prend, de 150 à 3000 ms. À 600 ms ça paraît rapide, à 1500 ms tu peux regarder.
+« Durée » règle combien de temps ça prend, de 150 à 3000 ms. À 600 ms ça paraît rapide, à 1500 ms vous pouvez regarder.
 
-## 5. Choisir comment les fenêtres s'ouvrent
+## 5. Choisir comment les fenêtres s’ouvrent
 
-« Animation d'ouverture » commence sur « Comme la fermeture, à l'envers » : une nouvelle fenêtre apparaît comme la dernière a disparu, jouée en sens inverse. Les braises se rassemblent, les éclats remontent et se recollent. Tant que l'animation de fermeture est sur « Par défaut de niri », cela laisse aussi l'ouverture à niri.
+« Animation d’ouverture » commence sur « Comme la fermeture, à l’envers » : une nouvelle fenêtre apparaît comme la dernière a disparu, jouée en sens inverse. Les braises se rassemblent, les éclats remontent et se recollent. Tant que l’animation de fermeture est sur « Par défaut de niri », cela laisse aussi l’ouverture à niri.
 
-Tu peux aussi choisir une autre animation pour l'ouverture, « Au hasard », ou « Par défaut de niri » si tu préfères garder l'animation de niri pour les nouvelles fenêtres. « Durée d'ouverture » fonctionne comme celle de la fermeture ; 450 ms est la valeur par défaut, parce qu'une nouvelle fenêtre doit être là vite.
+Vous pouvez aussi choisir une autre animation pour l’ouverture, « Au hasard », ou « Par défaut de niri » si vous préférez garder l’animation de niri pour les nouvelles fenêtres. « Durée d’ouverture » fonctionne comme celle de la fermeture ; 450 ms est la valeur par défaut, parce qu’une nouvelle fenêtre doit être là vite.
 
 ## 6. Bords lumineux
 
-« Bords lumineux » fait s'allumer dans ta couleur d'accent le front du feu, les fissures entre les éclats et les jointures des carreaux. Désactive-le pour des animations sans lumière.
+« Bords lumineux » fait s’allumer dans votre couleur d’accent le front du feu, les fissures entre les éclats et les jointures des carreaux. Désactivez-le pour des animations sans lumière.
 
-![Fissures lumineuses dans la couleur d'accent](images/04-glow.png)
+![Fissures lumineuses dans la couleur d’accent](images/04-glow.png)
 
-La couleur suit l'accent de DMS : quand l'accent change, l'animation suivante brille dans la nouvelle couleur. Tube éteint fait toujours un éclair blanc.
+La couleur suit l’accent de DMS : quand l’accent change, l’animation suivante brille dans la nouvelle couleur. Tube éteint fait toujours un éclair blanc.
 
 ## 7. Laisser faire le hasard (facultatif)
 
-Choisis « Au hasard » comme animation de fermeture. Chaque fenêtre reçoit alors sa propre animation. Sous les paramètres apparaît une liste, « Le hasard choisit parmi celles-ci : », où tu actives ou désactives chaque animation.
+Choisissez « Au hasard » comme animation de fermeture. Chaque fenêtre reçoit alors sa propre animation. Sous les paramètres apparaît une liste, « Le hasard choisit parmi celles-ci : », où vous activez ou désactivez chaque animation.
 
 ![La sélection pour le mode au hasard](images/05-random.png)
 
-Six animations sont actives au départ : Braise, Éclats, Fonte, Glitch, Tube éteint et Pluie de code. Si tu les désactives toutes, c'est Braise qui sert.
+Six animations sont actives au départ : Braise, Éclats, Fonte, Glitch, Tube éteint et Pluie de code. Si vous les désactivez toutes, c’est Braise qui sert.
 
 ## 8. Les voisines attendent (niri avec hold-layout)
 
-Quand une fenêtre au milieu d'une rangée se ferme, niri déplace aussitôt les fenêtres à sa droite dans le vide, et elles glissent par-dessus l'animation pendant qu'elle tourne encore. Si ton niri connaît l'option `hold-layout`, la page de paramètres montre l'interrupteur « Les voisines attendent ». Activé, les voisines restent en place jusqu'à la fin de l'animation de fermeture, et ne se déplacent qu'ensuite.
+Quand une fenêtre au milieu d’une rangée se ferme, niri déplace aussitôt les fenêtres à sa droite dans le vide, et elles glissent par-dessus l’animation pendant qu’elle tourne encore. Si votre niri connaît l’option `hold-layout`, la page de paramètres montre l’interrupteur « Les voisines attendent ». Activé, les voisines restent en place jusqu’à la fin de l’animation de fermeture, et ne se déplacent qu’ensuite.
 
-`hold-layout` ne fait pas partie de niri ; l'option vient d'un patch non officiel. Avec le niri de ta distribution, l'interrupteur reste donc caché. Tout le reste de ce guide fonctionne sans lui.
+`hold-layout` ne fait pas partie de niri ; l’option vient d’un patch non officiel. Avec le niri de votre distribution, l’interrupteur reste donc caché. Tout le reste de ce guide fonctionne sans lui.
 
-Essaie sur une fenêtre qui en a une autre à sa droite ; quand la dernière fenêtre d'une rangée se ferme, rien ne vient combler le vide.
+Essayez sur une fenêtre qui en a une autre à sa droite ; quand la dernière fenêtre d’une rangée se ferme, rien ne vient combler le vide.
 
-Si l'interrupteur n'apparaît pas, ton niri n'a pas l'option. Le plugin le vérifie au démarrage en faisant lire à `niri validate` un petit fichier qui l'utilise, et il n'écrit jamais l'option pour un niri qui la rejetterait.
+Si l’interrupteur n’apparaît pas, votre niri n’a pas l’option. Le plugin le vérifie au démarrage en faisant lire à `niri validate` un petit fichier qui l’utilise, et il n’écrit jamais l’option pour un niri qui la rejetterait.
 
 ## 9. Garder les animations par profil (facultatif)
 
-Avec le plugin [Profiles](https://github.com/satoshoe-dev/dms-profiles), saisis `windowFx` sous « Plugins enregistrés avec le profil ». Chaque profil garde alors ses propres animations, par exemple des calmes pour le travail et Glitch pour le soir.
+Avec le plugin [Profiles](https://github.com/satoshoe-dev/dms-profiles), saisissez `windowFx` sous « Plugins enregistrés avec le profil ». Chaque profil garde alors ses propres animations, par exemple des calmes pour le travail et Glitch pour le soir.
 
 ## 10. Le piloter par script
 
@@ -92,9 +92,9 @@ dms ipc call windowFx open random    # open animation: mirror, a kind, random or
 dms ipc call windowFx status
 ```
 
-Les animations s'appellent `ember`, `dissolve`, `pixel`, `shatter`, `melt`, `glitch`, `crt`, `snow`, `scan`, `code`, `swirl`, `squares` et `blinds`.
+Les animations s’appellent `ember`, `dissolve`, `pixel`, `shatter`, `melt`, `glitch`, `crt`, `snow`, `scan`, `code`, `swirl`, `squares` et `blinds`.
 
-Mets-le sur une touche, dans niri :
+Mettez-le sur une touche, dans niri :
 
 ```kdl
 binds {
@@ -106,24 +106,24 @@ binds {
 
 ### Les fenêtres se ferment toujours comme avant
 
-La ligne include de l'étape 3 manque, ou « Animation de fermeture » est sur « Par défaut de niri ». `ls ~/.config/niri/windowfx.kdl` montre si le plugin a écrit son fichier.
+La ligne include de l’étape 3 manque, ou « Animation de fermeture » est sur « Par défaut de niri ». `ls ~/.config/niri/windowfx.kdl` montre si le plugin a écrit son fichier.
 
-### Mes propres animations dans config.kdl l'emportent
+### Mes propres animations dans config.kdl l’emportent
 
-La ligne include est au-dessus de ton bloc `animations`. Déplace-la à la fin du fichier.
+La ligne include est au-dessus de votre bloc `animations`. Déplacez-la à la fin du fichier.
 
 ### niri affiche une erreur de configuration qui mentionne `hold-layout`
 
-niri a été remplacé par un niri sans l'option, et le fichier la contient encore. Dès que DMS tourne, le plugin vérifie de nouveau et réécrit le fichier sans elle ; niri recharge de lui-même.
+niri a été remplacé par un niri sans l’option, et le fichier la contient encore. Dès que DMS tourne, le plugin vérifie de nouveau et réécrit le fichier sans elle ; niri recharge de lui-même.
 
-### « Les voisines attendent » n'apparaît pas
+### « Les voisines attendent » n’apparaît pas
 
-Le niri installé ne connaît pas `hold-layout`. L'interrupteur apparaît au prochain démarrage de DMS une fois que c'est le cas.
+Le niri installé ne connaît pas `hold-layout`. L’interrupteur apparaît au prochain démarrage de DMS une fois que c’est le cas.
 
 ### Le hasard montre toujours la même animation
 
-Une seule animation est active dans la liste de l'étape 7, ou aucune ; dans ce cas c'est Braise qui sert.
+Une seule animation est active dans la liste de l’étape 7, ou aucune ; dans ce cas c’est Braise qui sert.
 
 ### Les animations restent après avoir désactivé le plugin
 
-Le plugin laisse `windowfx.kdl` en place. Mets les deux animations sur « Par défaut de niri » avant de le désactiver, ou supprime le fichier.
+Le plugin laisse `windowfx.kdl` en place. Mettez les deux animations sur « Par défaut de niri » avant de le désactiver, ou supprimez le fichier.

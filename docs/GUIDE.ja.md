@@ -22,7 +22,7 @@ git clone https://github.com/satoshoe-dev/dms-window-fx ~/.config/DankMaterialSh
 
 ![プラグイン一覧の Window FX](images/01-plugin-list.png)
 
-出てこないときは、そのページの「Scan」を押すか、`dms restart` でシェルを再起動します。
+出てこないときは、そのページの「スキャン」を押すか、`dms restart` でシェルを再起動します。
 
 ## 3. プラグインのファイルを niri に読ませる
 

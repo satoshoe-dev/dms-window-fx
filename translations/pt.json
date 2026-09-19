@@ -1,6 +1,6 @@
 {
     "niri default": {
-        "niri default": "Predefinição do niri"
+        "niri default": "Padrão do niri"
     },
     "Random": {
         "Random": "Aleatório"
@@ -30,13 +30,13 @@
         "Snowstorm": "Chuvisco"
     },
     "Scan": {
-        "Scan": "Varrimento"
+        "Scan": "Varredura"
     },
     "Code rain": {
         "Code rain": "Chuva de código"
     },
     "Swirl": {
-        "Swirl": "Remoinho"
+        "Swirl": "Redemoinho"
     },
     "Squares": {
         "Squares": "Quadrados"
@@ -60,7 +60,7 @@
         "Glowing edges": "Bordas luminosas"
     },
     "Edges and cracks light up in the accent color.": {
-        "Edges and cracks light up in the accent color.": "As bordas e as fissuras acendem-se na cor de destaque."
+        "Edges and cracks light up in the accent color.": "As bordas e as fissuras se acendem na cor de destaque."
     },
     "Random picks from these:": {
         "Random picks from these:": "O modo aleatório escolhe entre estes:"
@@ -81,6 +81,6 @@
         "Neighbours wait": "As vizinhas esperam"
     },
     "The windows around move into the gap only after the animation. Needs a niri with hold-layout.": {
-        "The windows around move into the gap only after the animation. Needs a niri with hold-layout.": "As janelas à volta só ocupam o espaço depois da animação. Precisa de um niri com hold-layout."
+        "The windows around move into the gap only after the animation. Needs a niri with hold-layout.": "As janelas ao redor só ocupam o espaço depois da animação. Precisa de um niri com hold-layout."
     }
 }

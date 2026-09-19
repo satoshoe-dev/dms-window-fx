@@ -22,7 +22,7 @@ Apri Impostazioni → Plugin. Window FX compare nell'elenco. Attivalo.
 
 ![Elenco dei plugin con Window FX](images/01-plugin-list.png)
 
-Se non compare, clicca su "Scan" in quella pagina oppure riavvia la shell con `dms restart`.
+Se non compare, clicca su «Scansiona» in quella pagina oppure riavvia la shell con `dms restart`.
 
 ## 3. Far leggere a niri il file del plugin
 
