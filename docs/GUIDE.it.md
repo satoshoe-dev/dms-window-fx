@@ -4,10 +4,16 @@
 
 ## 1. Installare il plugin
 
-Clona il repository nella tua cartella dei plugin DMS:
+Dal registro dei plugin:
 
 ```sh
-git clone https://github.com/21Rebel/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
+dms plugins install windowFx
+```
+
+Oppure clona il repository nella tua cartella dei plugin DMS:
+
+```sh
+git clone https://github.com/satoshoe-dev/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
 ```
 
 ## 2. Attivarlo
@@ -68,13 +74,15 @@ All'inizio sono accese sei animazioni: Brace, Frantumi, Scioglimento, Glitch, Tu
 
 Quando si chiude una finestra in mezzo a una fila, niri sposta subito nello spazio libero le finestre alla sua destra, e queste scivolano sopra l'animazione mentre è ancora in corso. Se il tuo niri conosce l'opzione `hold-layout`, la pagina delle impostazioni mostra l'interruttore "Le vicine aspettano". Se è acceso, le vicine restano dove sono finché l'animazione di chiusura non è finita, e solo dopo si spostano.
 
+`hold-layout` non fa parte di niri; l'opzione viene da una patch non ufficiale. Con il niri della tua distribuzione l'interruttore resta quindi nascosto. Tutto il resto di questa guida funziona anche senza.
+
 Provalo su una finestra che ne ha un'altra alla sua destra; quando si chiude l'ultima finestra di una fila, non arriva nulla a riempire lo spazio.
 
 Se l'interruttore non compare, il tuo niri non ha l'opzione. Il plugin lo controlla all'avvio facendo leggere a `niri validate` un file minuscolo che la usa, e non scrive mai l'opzione per un niri che la rifiuterebbe.
 
 ## 9. Tenere le animazioni per profilo (facoltativo)
 
-Con il plugin [Profiles](https://github.com/21Rebel/dms-profiles), inserisci `windowFx` in "Plugin salvati con il profilo". Ogni profilo tiene allora le sue animazioni, per esempio quelle calme per il lavoro e Glitch per la sera.
+Con il plugin [Profiles](https://github.com/satoshoe-dev/dms-profiles), inserisci `windowFx` in "Plugin salvati con il profilo". Ogni profilo tiene allora le sue animazioni, per esempio quelle calme per il lavoro e Glitch per la sera.
 
 ## 10. Comandarlo da script
 
@@ -96,14 +104,26 @@ binds {
 
 ## Risoluzione dei problemi
 
-**Le finestre si chiudono ancora come sempre.** Manca la riga include del passo 3, oppure "Animazione di chiusura" è su "Predefinita di niri". `ls ~/.config/niri/windowfx.kdl` mostra se il plugin ha scritto il suo file.
+### Le finestre si chiudono ancora come sempre
 
-**Prevalgono le mie animazioni in config.kdl.** La riga include sta sopra il tuo blocco `animations`. Spostala alla fine del file.
+Manca la riga include del passo 3, oppure "Animazione di chiusura" è su "Predefinita di niri". `ls ~/.config/niri/windowfx.kdl` mostra se il plugin ha scritto il suo file.
 
-**niri mostra un errore di configurazione che nomina `hold-layout`.** niri è stato sostituito da uno senza l'opzione, e il file la contiene ancora. Appena DMS è in esecuzione, il plugin controlla di nuovo e riscrive il file senza; niri ricarica da solo.
+### Prevalgono le mie animazioni in config.kdl
 
-**"Le vicine aspettano" non compare.** Il niri installato non conosce `hold-layout`. L'interruttore compare al prossimo avvio di DMS quando lo conosce.
+La riga include sta sopra il tuo blocco `animations`. Spostala alla fine del file.
 
-**Il caso mostra sempre la stessa animazione.** Nell'elenco del passo 7 è accesa una sola animazione, oppure nessuna; in quel caso viene usata Brace.
+### niri mostra un errore di configurazione che nomina `hold-layout`
 
-**Le animazioni restano dopo aver spento il plugin.** Il plugin lascia `windowfx.kdl` dov'è. Imposta entrambe le animazioni su "Predefinita di niri" prima di spegnerlo, oppure cancella il file.
+niri è stato sostituito da uno senza l'opzione, e il file la contiene ancora. Appena DMS è in esecuzione, il plugin controlla di nuovo e riscrive il file senza; niri ricarica da solo.
+
+### "Le vicine aspettano" non compare
+
+Il niri installato non conosce `hold-layout`. L'interruttore compare al prossimo avvio di DMS quando lo conosce.
+
+### Il caso mostra sempre la stessa animazione
+
+Nell'elenco del passo 7 è accesa una sola animazione, oppure nessuna; in quel caso viene usata Brace.
+
+### Le animazioni restano dopo aver spento il plugin
+
+Il plugin lascia `windowfx.kdl` dov'è. Imposta entrambe le animazioni su "Predefinita di niri" prima di spegnerlo, oppure cancella il file.

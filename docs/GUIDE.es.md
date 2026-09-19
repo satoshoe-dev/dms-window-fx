@@ -4,15 +4,21 @@
 
 ## 1. Instalar el plugin
 
-Clona el repositorio en tu carpeta de plugins de DMS:
+Desde el registro de complementos:
 
 ```sh
-git clone https://github.com/21Rebel/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
+dms plugins install windowFx
+```
+
+O clona el repositorio en tu carpeta de plugins de DMS:
+
+```sh
+git clone https://github.com/satoshoe-dev/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
 ```
 
 ## 2. Activarlo
 
-Abre Ajustes → Plugins. Window FX aparece en la lista. Actívalo.
+Abre Ajustes → Complementos. Window FX aparece en la lista. Actívalo.
 
 ![Lista de plugins con Window FX](images/01-plugin-list.png)
 
@@ -68,13 +74,15 @@ Al principio hay seis tipos activados: Brasas, Añicos, Derretir, Fallo de seña
 
 Cuando se cierra una ventana en medio de una fila, niri mueve enseguida las ventanas de su derecha hacia el hueco, y estas se deslizan sobre la animación mientras sigue en marcha. Si tu niri conoce la opción `hold-layout`, la página de ajustes muestra el interruptor «Las vecinas esperan». Con él activado, las vecinas se quedan donde están hasta que termina la animación de cierre, y solo entonces se desplazan.
 
+`hold-layout` no forma parte de niri; la opción viene de un parche no oficial. Con el niri de tu distribución el interruptor queda oculto. Todo lo demás de esta guía funciona sin él.
+
 Pruébalo con una ventana que tenga otra a su derecha; cuando se cierra la última ventana de una fila, no se mueve nada.
 
 Si el interruptor no aparece, tu niri no tiene la opción. El plugin lo comprueba al arrancar haciendo que `niri validate` lea un archivo diminuto que la usa, y nunca escribe la opción para un niri que la rechazaría.
 
 ## 9. Guardar las animaciones por perfil (opcional)
 
-Con el plugin [Profiles](https://github.com/21Rebel/dms-profiles), escribe `windowFx` en «Complementos guardados con el perfil». Así cada perfil guarda sus propias animaciones, por ejemplo unas tranquilas para trabajar y Fallo de señal para la noche.
+Con el plugin [Profiles](https://github.com/satoshoe-dev/dms-profiles), escribe `windowFx` en «Complementos guardados con el perfil». Así cada perfil guarda sus propias animaciones, por ejemplo unas tranquilas para trabajar y Fallo de señal para la noche.
 
 ## 10. Desde un script
 
@@ -96,14 +104,26 @@ binds {
 
 ## Solución de problemas
 
-**Las ventanas se siguen cerrando como siempre.** Falta la línea include del paso 3, o «Animación al cerrar» está en «Predeterminado de niri». `ls ~/.config/niri/windowfx.kdl` muestra si el plugin ha escrito su archivo.
+### Las ventanas se siguen cerrando como siempre
 
-**Ganan mis propias animaciones de config.kdl.** La línea include está por encima de tu bloque `animations`. Muévela al final del archivo.
+Falta la línea include del paso 3, o «Animación al cerrar» está en «Predeterminado de niri». `ls ~/.config/niri/windowfx.kdl` muestra si el plugin ha escrito su archivo.
 
-**niri muestra un error de configuración que menciona `hold-layout`.** niri se sustituyó por uno sin la opción, y el archivo aún la contiene de antes. En cuanto DMS está en marcha, el plugin vuelve a comprobarlo y escribe el archivo sin ella; niri lo vuelve a cargar por su cuenta.
+### Ganan mis propias animaciones de config.kdl
 
-**«Las vecinas esperan» no aparece.** El niri instalado no conoce `hold-layout`. Cuando lo conozca, el interruptor aparece tras el siguiente arranque de DMS.
+La línea include está por encima de tu bloque `animations`. Muévela al final del archivo.
 
-**Aleatorio muestra siempre el mismo tipo.** En la lista del paso 7 solo hay un tipo activado, o ninguno; entonces se usa Brasas.
+### niri muestra un error de configuración que menciona `hold-layout`
 
-**Las animaciones se quedan después de desactivar el plugin.** El plugin deja `windowfx.kdl` donde está. Pon las dos animaciones en «Predeterminado de niri» antes de desactivarlo, o borra el archivo.
+niri se sustituyó por uno sin la opción, y el archivo aún la contiene de antes. En cuanto DMS está en marcha, el plugin vuelve a comprobarlo y escribe el archivo sin ella; niri lo vuelve a cargar por su cuenta.
+
+### «Las vecinas esperan» no aparece
+
+El niri instalado no conoce `hold-layout`. Cuando lo conozca, el interruptor aparece tras el siguiente arranque de DMS.
+
+### Aleatorio muestra siempre el mismo tipo
+
+En la lista del paso 7 solo hay un tipo activado, o ninguno; entonces se usa Brasas.
+
+### Las animaciones se quedan después de desactivar el plugin
+
+El plugin deja `windowfx.kdl` donde está. Pon las dos animaciones en «Predeterminado de niri» antes de desactivarlo, o borra el archivo.

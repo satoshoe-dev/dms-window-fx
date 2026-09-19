@@ -34,11 +34,11 @@ Hay 13 tipos:
 
 «Bordes luminosos» hace que los bordes, las grietas y las juntas se iluminen en el color de acento de DMS. Cuando cambia el acento, el plugin vuelve a escribir el archivo. Tubo apagado siempre destella en blanco, con o sin el ajuste.
 
-Si usas el plugin [Profiles](https://github.com/21Rebel/dms-profiles), escribe `windowFx` en Ajustes → Plugins → Profiles → Complementos guardados con el perfil, y cada perfil guarda sus propias animaciones.
+Si usas el plugin [Profiles](https://github.com/satoshoe-dev/dms-profiles), escribe `windowFx` en Ajustes → Complementos → Profiles → Complementos guardados con el perfil, y cada perfil guarda sus propias animaciones.
 
 ## Requisitos
 
-DankMaterialShell 1.6.1 o más reciente y niri 26.04 o más reciente.
+DankMaterialShell 1.6.1 o más reciente y niri 26.04 o más reciente. La versión de niri importa por la línea include de abajo: niri conoce `optional=true` desde la 26.04.
 
 El plugin solo escribe su propio archivo. niri lo lee cuando tu configuración de niri lo incluye, así que añade esta línea al final de `~/.config/niri/config.kdl`:
 
@@ -48,18 +48,29 @@ include optional=true "windowfx.kdl"
 
 Al final, porque un include sobrescribe lo que va antes; así las animaciones del plugin ganan sobre las de tu configuración principal.
 
+«Las vecinas esperan» necesita además un niri con un parche no oficial; más detalles abajo, en «Las vecinas esperan». Todo lo demás funciona con un niri normal.
+
 ## Instalación
 
+Desde el registro de complementos:
+
 ```sh
-git clone https://github.com/21Rebel/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
+dms plugins install windowFx
 dms ipc call plugins enable windowFx
 ```
 
-Después elige una animación al cerrar en Ajustes → Plugins → Window FX. Hasta entonces, niri mantiene sus propias animaciones.
+También aparece en DMS en Ajustes → Complementos → Explorar. Para instalarlo desde el repositorio:
+
+```sh
+git clone https://github.com/satoshoe-dev/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
+dms ipc call plugins enable windowFx
+```
+
+Después elige una animación al cerrar en Ajustes → Complementos → Window FX. Hasta entonces, niri mantiene sus propias animaciones.
 
 ## Ajustes
 
-Ajustes → Plugins → Window FX
+Ajustes → Complementos → Window FX
 
 | Ajuste | Predeterminado |
 |---|---|
@@ -95,7 +106,7 @@ binds {
 
 Cuando se cierra una ventana, niri la saca del diseño enseguida. Las ventanas de al lado empiezan a moverse hacia el hueco al momento y se deslizan sobre la ventana que se cierra mientras su animación sigue en marcha. Con un fundido corto casi no se nota; con un borde en llamas o con añicos que caen, la vecina tapa casi todo.
 
-El parche que lo cambia es pequeño: una opción nueva `hold-layout` en `window-close`. Con ella, todo lo que pone en marcha la retirada (las vecinas que se desplazan, la vista que se mueve, las columnas que cambian de tamaño) empieza solo cuando la animación de cierre ha terminado. Se ha ofrecido a niri como pull request.
+Escribí un pequeño parche para niri que añade la opción `hold-layout` a `window-close`. Con ella, todo lo que pone en marcha la retirada (las vecinas que se desplazan, la vista que se mueve, las columnas que cambian de tamaño) empieza solo cuando la animación de cierre ha terminado. El parche no forma parte de niri, y el niri de tu distribución no conoce la opción. Sin un niri compilado con este parche, «Las vecinas esperan» no tiene efecto.
 
 El plugin comprueba al arrancar si el niri instalado conoce la opción, haciendo que `niri validate` lea un archivo diminuto que la usa. Si niri la conoce, el interruptor «Las vecinas esperan» aparece en la página de ajustes; si no, queda oculto y el plugin nunca escribe la opción, porque un niri sin el parche rechazaría el archivo entero.
 

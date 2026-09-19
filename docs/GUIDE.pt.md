@@ -4,10 +4,16 @@
 
 ## 1. Instalar o plugin
 
-Clona o repositório para a tua pasta de plugins do DMS:
+Pelo registro de plugins:
 
 ```sh
-git clone https://github.com/21Rebel/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
+dms plugins install windowFx
+```
+
+Ou clona o repositório para a tua pasta de plugins do DMS:
+
+```sh
+git clone https://github.com/satoshoe-dev/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
 ```
 
 ## 2. Ativá-lo
@@ -68,13 +74,15 @@ No início há seis tipos ligados: Brasas, Estilhaçar, Derreter, Falha de sinal
 
 Quando uma janela a meio de uma fila fecha, o niri move logo as janelas à sua direita para o espaço livre, e elas deslizam por cima da animação enquanto ela ainda corre. Se o teu niri conhecer a opção `hold-layout`, a página de definições mostra o interruptor "As vizinhas esperam". Com ele ligado, as vizinhas ficam onde estão até a animação de fecho terminar, e só então avançam.
 
+`hold-layout` não faz parte do niri; a opção vem de um patch não oficial. Com o niri da tua distribuição o interruptor fica por isso escondido. Tudo o resto deste guia funciona sem ele.
+
 Experimenta com uma janela que tenha outra à direita; quando fecha a última janela de uma fila, nada se move.
 
 Se o interruptor não aparecer, o teu niri não tem a opção. O plugin verifica isso ao arrancar pondo o `niri validate` a ler um ficheiro minúsculo que a usa, e nunca escreve a opção para um niri que a rejeitaria.
 
 ## 9. Guardar as animações por perfil (opcional)
 
-Com o plugin [Profiles](https://github.com/21Rebel/dms-profiles), escreve `windowFx` em "Plugins salvos com o perfil". Cada perfil guarda então as suas próprias animações, por exemplo umas calmas para o trabalho e Falha de sinal para a noite.
+Com o plugin [Profiles](https://github.com/satoshoe-dev/dms-profiles), escreve `windowFx` em "Plugins salvos com o perfil". Cada perfil guarda então as suas próprias animações, por exemplo umas calmas para o trabalho e Falha de sinal para a noite.
 
 ## 10. Usá-lo em scripts
 
@@ -96,14 +104,26 @@ binds {
 
 ## Resolução de problemas
 
-**As janelas continuam a fechar como sempre.** Falta a linha include do passo 3, ou "Animação ao fechar" está em "Predefinição do niri". `ls ~/.config/niri/windowfx.kdl` mostra se o plugin já escreveu o seu ficheiro.
+### As janelas continuam a fechar como sempre
 
-**Ganham as minhas próprias animações do config.kdl.** A linha include está acima do teu bloco `animations`. Passa-a para o fim do ficheiro.
+Falta a linha include do passo 3, ou "Animação ao fechar" está em "Predefinição do niri". `ls ~/.config/niri/windowfx.kdl` mostra se o plugin já escreveu o seu ficheiro.
 
-**O niri mostra um erro de configuração que menciona `hold-layout`.** O niri foi substituído por um sem a opção, e o ficheiro ainda a tem de antes. Assim que o DMS estiver a correr, o plugin volta a verificar e escreve o ficheiro sem ela; o niri volta a carregá-lo sozinho.
+### Ganham as minhas próprias animações do config.kdl
 
-**"As vizinhas esperam" não aparece.** O niri instalado não conhece `hold-layout`. Quando conhecer, o interruptor aparece depois do próximo arranque do DMS.
+A linha include está acima do teu bloco `animations`. Passa-a para o fim do ficheiro.
 
-**Aleatório mostra sempre o mesmo tipo.** Na lista do passo 7 só está ligado um tipo, ou nenhum; nesse caso é usado Brasas.
+### O niri mostra um erro de configuração que menciona `hold-layout`
 
-**As animações ficam depois de desligar o plugin.** O plugin deixa o `windowfx.kdl` onde está. Põe as duas animações em "Predefinição do niri" antes de o desligar, ou apaga o ficheiro.
+O niri foi substituído por um sem a opção, e o ficheiro ainda a tem de antes. Assim que o DMS estiver a correr, o plugin volta a verificar e escreve o ficheiro sem ela; o niri volta a carregá-lo sozinho.
+
+### "As vizinhas esperam" não aparece
+
+O niri instalado não conhece `hold-layout`. Quando conhecer, o interruptor aparece depois do próximo arranque do DMS.
+
+### Aleatório mostra sempre o mesmo tipo
+
+Na lista do passo 7 só está ligado um tipo, ou nenhum; nesse caso é usado Brasas.
+
+### As animações ficam depois de desligar o plugin
+
+O plugin deixa o `windowfx.kdl` onde está. Põe as duas animações em "Predefinição do niri" antes de o desligar, ou apaga o ficheiro.

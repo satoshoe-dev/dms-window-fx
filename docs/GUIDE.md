@@ -4,10 +4,16 @@
 
 ## 1. Install the plugin
 
-Clone the repository into your DMS plugin folder:
+From the plugin registry:
 
 ```sh
-git clone https://github.com/21Rebel/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
+dms plugins install windowFx
+```
+
+Or clone the repository into your DMS plugin folder:
+
+```sh
+git clone https://github.com/satoshoe-dev/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
 ```
 
 ## 2. Enable it
@@ -68,13 +74,15 @@ Six kinds are on at the start: Ember, Shatter, Melt, Glitch, Tube off and Code r
 
 When a window in the middle of a row closes, niri moves the windows to its right into the gap right away, and they slide over the animation while it is still running. If your niri knows the option `hold-layout`, the settings page shows the switch "Neighbours wait". With it on, the neighbours stay where they are until the close animation has ended, and only then move over.
 
+`hold-layout` is not part of niri. It comes from an unofficial patch, so with the niri from your distribution the switch stays hidden. Everything else in this guide works without it.
+
 Try it on a window that has another one to its right; when the last window of a row closes, nothing moves in.
 
 If the switch does not appear, your niri does not have the option. The plugin checks that at start by letting `niri validate` read a tiny file that uses it, and it never writes the option for a niri that would reject it.
 
 ## 9. Keep the animations per profile (optional)
 
-With the [Profiles](https://github.com/21Rebel/dms-profiles) plugin, enter `windowFx` under "Plugins saved with a profile". Every profile then keeps its own animations, for example calm ones for work and Glitch for the evening.
+With the [Profiles](https://github.com/satoshoe-dev/dms-profiles) plugin, enter `windowFx` under "Plugins saved with a profile". Every profile then keeps its own animations, for example calm ones for work and Glitch for the evening.
 
 ## 10. Script it
 
@@ -96,14 +104,26 @@ binds {
 
 ## Troubleshooting
 
-**Windows still close the way they always did.** The include line from step 3 is missing, or "Close animation" is set to "niri default". `ls ~/.config/niri/windowfx.kdl` shows whether the plugin has written its file.
+### Windows still close the way they always did
 
-**My own animations in config.kdl win.** The include line is above your `animations` block. Move it to the end of the file.
+The include line from step 3 is missing, or "Close animation" is set to "niri default". `ls ~/.config/niri/windowfx.kdl` shows whether the plugin has written its file.
 
-**niri shows a config error that mentions `hold-layout`.** niri was replaced by one without the option, and the file still holds it from before. As soon as DMS is running, the plugin checks again and writes the file without it; niri reloads on its own.
+### My own animations in config.kdl win
 
-**"Neighbours wait" does not appear.** The installed niri does not know `hold-layout`. The switch shows up after the next start of DMS once it does.
+The include line is above your `animations` block. Move it to the end of the file.
 
-**Random always shows the same kind.** Only one kind is switched on in the list from step 7, or none at all; then Ember is used.
+### niri shows a config error that mentions `hold-layout`
 
-**The animations stay after I switched the plugin off.** The plugin leaves `windowfx.kdl` where it is. Set both animations to "niri default" before you switch it off, or delete the file.
+niri was replaced by one without the option, and the file still holds it from before. As soon as DMS is running, the plugin checks again and writes the file without it; niri reloads on its own.
+
+### "Neighbours wait" does not appear
+
+The installed niri does not know `hold-layout`. The switch shows up after the next start of DMS once it does.
+
+### Random always shows the same kind
+
+Only one kind is switched on in the list from step 7, or none at all; then Ember is used.
+
+### The animations stay after I switched the plugin off
+
+The plugin leaves `windowfx.kdl` where it is. Set both animations to "niri default" before you switch it off, or delete the file.

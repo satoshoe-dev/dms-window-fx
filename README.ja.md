@@ -34,11 +34,11 @@ niri は閉じるウィンドウや開くウィンドウを、カスタムシェ
 
 「光るふち」をオンにすると、ふち、割れ目、継ぎ目が DMS のアクセントカラーで光ります。アクセントが変わると、プラグインはファイルを書き直します。ブラウン管オフはこの設定に関係なく、いつも白く光ります。
 
-[Profiles](https://github.com/21Rebel/dms-profiles) プラグインを使っているなら、設定 → プラグイン → Profiles → プロファイルと一緒に保存するプラグイン に `windowFx` を入力してください。プロファイルごとにアニメーションを持てるようになります。
+[Profiles](https://github.com/satoshoe-dev/dms-profiles) プラグインを使っているなら、設定 → プラグイン → Profiles → プロファイルと一緒に保存するプラグイン に `windowFx` を入力してください。プロファイルごとにアニメーションを持てるようになります。
 
 ## 必要なもの
 
-DankMaterialShell 1.6.1 以降と niri 26.04 以降。
+DankMaterialShell 1.6.1 以降と niri 26.04 以降。niri のバージョンは下の include の行のためです。`optional=true` は niri 26.04 から使えます。
 
 プラグインは自分のファイルを書くだけです。niri がそれを読むのは、niri の設定がそのファイルを include しているときだけです。次の行を `~/.config/niri/config.kdl` の末尾に足してください。
 
@@ -48,10 +48,21 @@ include optional=true "windowfx.kdl"
 
 末尾に置くのは、include がそれより前の内容を上書きするからです。こうすると、プラグインのアニメーションがメインの設定より優先されます。
 
+「隣のウィンドウを待たせる」には、さらに非公式のパッチを当てた niri が必要です (下の「隣のウィンドウを待たせる」の節を参照)。それ以外は普通の niri で動きます。
+
 ## インストール
 
+プラグインレジストリから:
+
 ```sh
-git clone https://github.com/21Rebel/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
+dms plugins install windowFx
+dms ipc call plugins enable windowFx
+```
+
+DMS の 設定 → プラグイン → ブラウズ からも入手できます。リポジトリから直接入れる場合:
+
+```sh
+git clone https://github.com/satoshoe-dev/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
 dms ipc call plugins enable windowFx
 ```
 
@@ -95,7 +106,7 @@ binds {
 
 ウィンドウが閉じると、niri はそれをすぐにレイアウトから外します。隣のウィンドウはすぐに空いた場所へ動き出し、アニメーションがまだ続いている閉じかけのウィンドウの上に重なります。短いフェードならほとんど目立ちませんが、燃えるふちや落ちていく破片だと、その大部分が隣のウィンドウに隠れます。
 
-これを変えるパッチは小さなものです。`window-close` に新しいオプション `hold-layout` を足します。これがあると、ウィンドウを外したことで動き出すもの (隣のウィンドウの移動、ビューのスクロール、列の大きさの変化) は、閉じるアニメーションが終わってから始まります。このパッチは pull request として niri に提案しています。
+そのために、`window-close` にオプション `hold-layout` を足す小さなパッチを niri 向けに書きました。これがあると、ウィンドウを外したことで動き出すもの (隣のウィンドウの移動、ビューのスクロール、列の大きさの変化) は、閉じるアニメーションが終わってから始まります。このパッチは niri 本体には含まれておらず、ディストリビューションの niri はこのオプションを知りません。このパッチを当ててビルドした niri でなければ、「隣のウィンドウを待たせる」は何もしません。
 
 プラグインは起動時に、入っている niri がこのオプションを知っているかを確かめます。オプションを使った小さなファイルを `niri validate` に読ませるやり方です。知っていれば設定ページに「隣のウィンドウを待たせる」のスイッチが出ます。知らなければスイッチは隠れたままで、プラグインはこのオプションを書きません。標準の niri はファイル全体を受け付けなくなるからです。
 

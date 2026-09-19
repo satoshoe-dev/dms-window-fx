@@ -34,11 +34,11 @@ Há 13 tipos:
 
 "Bordas luminosas" faz com que as bordas, as fissuras e as juntas se acendam na cor de destaque do DMS. Quando a cor de destaque muda, o plugin volta a escrever o ficheiro. O Tubo desligado dá sempre um clarão branco, com ou sem a definição.
 
-Se usas o plugin [Profiles](https://github.com/21Rebel/dms-profiles), escreve `windowFx` em Definições → Plugins → Profiles → Plugins salvos com o perfil, e cada perfil guarda as suas próprias animações.
+Se usas o plugin [Profiles](https://github.com/satoshoe-dev/dms-profiles), escreve `windowFx` em Definições → Plugins → Profiles → Plugins salvos com o perfil, e cada perfil guarda as suas próprias animações.
 
 ## Requisitos
 
-DankMaterialShell 1.6.1 ou mais recente e niri 26.04 ou mais recente.
+DankMaterialShell 1.6.1 ou mais recente e niri 26.04 ou mais recente. A versão do niri conta por causa da linha include abaixo: o niri conhece `optional=true` desde a 26.04.
 
 O plugin só escreve o seu próprio ficheiro. O niri lê-o quando a tua configuração do niri o inclui, por isso acrescenta esta linha no fim de `~/.config/niri/config.kdl`:
 
@@ -48,10 +48,21 @@ include optional=true "windowfx.kdl"
 
 No fim, porque um include sobrepõe-se ao que vem antes dele; assim as animações do plugin ganham às da tua configuração principal.
 
+"As vizinhas esperam" precisa ainda de um niri com um patch não oficial, ver mais abaixo a secção "As vizinhas esperam". Tudo o resto funciona com um niri normal.
+
 ## Instalação
 
+Pelo registro de plugins:
+
 ```sh
-git clone https://github.com/21Rebel/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
+dms plugins install windowFx
+dms ipc call plugins enable windowFx
+```
+
+Ele também aparece no DMS em Configurações → Plugins → Navegar. Para instalar a partir do repositório:
+
+```sh
+git clone https://github.com/satoshoe-dev/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
 dms ipc call plugins enable windowFx
 ```
 
@@ -95,7 +106,7 @@ binds {
 
 Quando uma janela fecha, o niri tira-a logo da disposição. As janelas ao lado começam de imediato a mover-se para o espaço livre e deslizam por cima da janela que está a fechar enquanto a animação ainda corre. Com um desvanecimento curto quase não se nota; com uma borda em chamas ou estilhaços a cair, a vizinha tapa quase tudo.
 
-O patch que muda isto é pequeno: uma opção nova `hold-layout` em `window-close`. Com ela, tudo o que a remoção põe em movimento (as vizinhas que deslizam, a vista que se desloca, as colunas que mudam de tamanho) só começa quando a animação de fecho terminou. Foi proposto ao niri como pull request.
+Escrevi um pequeno patch para o niri que acrescenta a opção `hold-layout` a `window-close`. Com ela, tudo o que a remoção põe em movimento (as vizinhas que deslizam, a vista que se desloca, as colunas que mudam de tamanho) só começa quando a animação de fecho terminou. O patch não faz parte do niri, e o niri da tua distribuição não conhece a opção. Sem um niri compilado com este patch, "As vizinhas esperam" não tem efeito.
 
 O plugin verifica ao arrancar se o niri instalado conhece a opção, pondo o `niri validate` a ler um ficheiro minúsculo que a usa. Se o niri a conhecer, o interruptor "As vizinhas esperam" aparece na página de definições; se não, fica escondido e o plugin nunca escreve a opção, porque um niri sem o patch rejeitaria o ficheiro inteiro.
 

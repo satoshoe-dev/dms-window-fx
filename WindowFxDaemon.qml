@@ -67,7 +67,8 @@ PluginComponent {
     }
     readonly property color accent: Theme.primary
     // Neighbours wait for the close animation. Needs a niri that knows
-    // `hold-layout` (own patch); a stock niri would reject the whole file.
+    // `hold-layout`, which only an unofficial patch adds; a stock niri
+    // rejects the whole file if the option is in it.
     readonly property bool holdLayout: {
         root._settings;
         return cfg("holdLayout", false);

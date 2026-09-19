@@ -34,11 +34,11 @@ niri 可以用自定义着色器来画正在关闭或打开的窗口。插件把
 
 “发光边缘”让边缘、裂缝和接缝用 DMS 的强调色发光。强调色一变，插件就重新写文件。显像管关机不管这个设置怎样，总是闪白光。
 
-如果你在用 [Profiles](https://github.com/21Rebel/dms-profiles) 插件，在 设置 → 插件 → Profiles → 随配置保存的插件 里填入 `windowFx`，每个配置就会保留自己的动画。
+如果你在用 [Profiles](https://github.com/satoshoe-dev/dms-profiles) 插件，在 设置 → 插件 → Profiles → 随配置保存的插件 里填入 `windowFx`，每个配置就会保留自己的动画。
 
 ## 要求
 
-DankMaterialShell 1.6.1 或更新版本，niri 26.04 或更新版本。
+DankMaterialShell 1.6.1 或更新版本，niri 26.04 或更新版本。niri 的版本要求来自下面的 include 行：niri 从 26.04 起才支持 `optional=true`。
 
 插件只写它自己的文件。只有 niri 配置 include 了这个文件，niri 才会读它。把这一行加到 `~/.config/niri/config.kdl` 的末尾:
 
@@ -48,10 +48,21 @@ include optional=true "windowfx.kdl"
 
 放在末尾，是因为 include 会覆盖它前面的内容；这样插件的动画就会优先于主配置里的动画。
 
+“相邻窗口等待”还需要打了非官方补丁的 niri，详见下文“相邻窗口等待”一节。其余功能用普通的 niri 就可以。
+
 ## 安装
 
+从插件注册表安装：
+
 ```sh
-git clone https://github.com/21Rebel/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
+dms plugins install windowFx
+dms ipc call plugins enable windowFx
+```
+
+也可以在 DMS 的 设置 → 插件 → 浏览 中找到它。若要从仓库安装：
+
+```sh
+git clone https://github.com/satoshoe-dev/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
 dms ipc call plugins enable windowFx
 ```
 
@@ -95,7 +106,7 @@ binds {
 
 窗口一关闭，niri 就立刻把它从布局里拿掉。旁边的窗口马上开始往空位移动，滑到还在播放动画的窗口上面。短短的淡出几乎看不出来；换成燃烧的边缘或落下的碎片，大部分就被相邻的窗口挡住了。
 
-改变这一点的补丁很小: 在 `window-close` 里加一个新选项 `hold-layout`。有了它，移除窗口所引起的一切 (相邻窗口移进来、视图滚动、列改变大小) 都要等关闭动画结束后才开始。这个补丁以 pull request 的形式向 niri 提出。
+为此我给 niri 写了一个小补丁，在 `window-close` 里加入选项 `hold-layout`。有了它，移除窗口所引起的一切 (相邻窗口移进来、视图滚动、列改变大小) 都要等关闭动画结束后才开始。这个补丁不属于 niri，发行版里的 niri 不认识这个选项。没有用这个补丁编译的 niri，“相邻窗口等待”就不起作用。
 
 插件启动时会检查装着的 niri 是否认识这个选项，做法是让 `niri validate` 读一个用了这个选项的小文件。如果认识，设置页面上就会出现“相邻窗口等待”这个开关；如果不认识，开关就一直隐藏，插件也从不写这个选项，因为原版 niri 会拒绝整个文件。
 

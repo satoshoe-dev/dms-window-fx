@@ -34,11 +34,11 @@ Es gibt 13 Arten:
 
 „Leuchtende Kanten“ lässt Kanten, Risse und Fugen in der Akzentfarbe von DMS aufleuchten. Ändert sich der Akzent, schreibt das Plugin die Datei neu. „Röhre aus“ blitzt immer weiß auf, mit oder ohne diese Einstellung.
 
-Wenn du das Plugin [Profiles](https://github.com/21Rebel/dms-profiles) benutzt, trag `windowFx` unter Einstellungen → Plugins → Profiles → Im Profil mitgespeicherte Plugins ein, dann behält jedes Profil seine eigenen Animationen.
+Wenn du das Plugin [Profiles](https://github.com/satoshoe-dev/dms-profiles) benutzt, trag `windowFx` unter Einstellungen → Plugins → Profiles → Im Profil mitgespeicherte Plugins ein, dann behält jedes Profil seine eigenen Animationen.
 
 ## Voraussetzungen
 
-DankMaterialShell 1.6.1 oder neuer und niri 26.04 oder neuer.
+DankMaterialShell 1.6.1 oder neuer und niri 26.04 oder neuer. Die niri-Version braucht es für die Include-Zeile unten: `optional=true` kennt niri seit 26.04.
 
 Das Plugin schreibt nur seine eigene Datei. niri liest sie, sobald deine niri-Konfiguration sie einbindet. Trag deshalb diese Zeile am Ende von `~/.config/niri/config.kdl` ein:
 
@@ -48,10 +48,21 @@ include optional=true "windowfx.kdl"
 
 Am Ende, weil ein Include überschreibt, was vor ihm steht; so setzen sich die Animationen des Plugins gegen die in deiner Hauptkonfiguration durch.
 
+„Nachbarn warten“ braucht zusätzlich ein niri mit einem inoffiziellen Patch, mehr dazu unter [Nachbarn warten](#nachbarn-warten). Alles andere läuft mit dem normalen niri.
+
 ## Installation
 
+Aus der Plugin-Registry:
+
 ```sh
-git clone https://github.com/21Rebel/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
+dms plugins install windowFx
+dms ipc call plugins enable windowFx
+```
+
+Das Plugin steht auch in DMS unter Einstellungen → Plugins → Durchsuchen. Oder direkt aus dem Repository:
+
+```sh
+git clone https://github.com/satoshoe-dev/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
 dms ipc call plugins enable windowFx
 ```
 
@@ -95,7 +106,7 @@ binds {
 
 Wenn ein Fenster sich schließt, nimmt niri es sofort aus dem Layout. Die Fenster daneben rücken gleich in die Lücke und schieben sich über das schließende Fenster, während seine Animation noch läuft. Bei einem kurzen Ausblenden fällt das kaum auf; bei einer brennenden Kante oder fallenden Scherben deckt der Nachbar das meiste davon zu.
 
-Der Patch, der das ändert, ist klein: eine neue Option `hold-layout` in `window-close`. Mit ihr beginnt alles, was das Entfernen in Gang setzt (Nachbarn rücken nach, die Ansicht scrollt, Spalten ändern ihre Größe), erst dann, wenn die Schließ-Animation zu Ende ist. Er ist als Pull Request an niri gedacht.
+Ich habe dafür einen kleinen Patch für niri geschrieben, der `window-close` um die Option `hold-layout` ergänzt. Mit ihr beginnt alles, was das Entfernen in Gang setzt (Nachbarn rücken nach, die Ansicht scrollt, Spalten ändern ihre Größe), erst dann, wenn die Schließ-Animation zu Ende ist. Der Patch gehört nicht zu niri, und das niri deiner Distribution kennt die Option nicht. Ohne ein niri, das mit diesem Patch gebaut ist, bewirkt „Nachbarn warten“ nichts.
 
 Das Plugin prüft beim Start, ob das installierte niri die Option kennt: es lässt `niri validate` eine winzige Datei lesen, die sie benutzt. Kennt niri sie, erscheint auf der Einstellungsseite der Schalter „Nachbarn warten“; sonst bleibt er verborgen und das Plugin schreibt die Option nie, weil ein unverändertes niri die ganze Datei ablehnen würde.
 

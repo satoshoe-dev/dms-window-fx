@@ -4,10 +4,16 @@
 
 ## 1. 安装插件
 
-把仓库克隆到 DMS 的插件目录:
+从插件注册表安装：
 
 ```sh
-git clone https://github.com/21Rebel/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
+dms plugins install windowFx
+```
+
+或者把仓库克隆到 DMS 的插件目录:
+
+```sh
+git clone https://github.com/satoshoe-dev/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
 ```
 
 ## 2. 打开它
@@ -68,13 +74,15 @@ include optional=true "windowfx.kdl"
 
 一行中间的窗口关闭时，niri 会立刻把它右边的窗口移进空位，这些窗口会滑到还在播放的动画上面。如果你的 niri 认识 `hold-layout` 这个选项，设置页面上会出现“相邻窗口等待”这个开关。打开后，相邻的窗口会停在原处，直到关闭动画结束，然后才移过来。
 
+`hold-layout` 不是 niri 自带的选项，而是来自一个非官方补丁。所以用发行版里的 niri 时，这个开关不会出现。本指南的其余内容不需要它也能用。
+
 在右边还有别的窗口的窗口上试试；一行最后一个窗口关闭时，没有窗口会移进来。
 
 如果开关没出现，说明你的 niri 没有这个选项。插件启动时会让 `niri validate` 读一个用了这个选项的小文件来检查，对不认识它的 niri，插件从不写这个选项。
 
 ## 9. 按配置保留动画 (可选)
 
-如果你在用 [Profiles](https://github.com/21Rebel/dms-profiles) 插件，在“随配置保存的插件”中填入 `windowFx`。每个配置就会保留自己的动画，比如工作时用安静的效果，晚上用故障。
+如果你在用 [Profiles](https://github.com/satoshoe-dev/dms-profiles) 插件，在“随配置保存的插件”中填入 `windowFx`。每个配置就会保留自己的动画，比如工作时用安静的效果，晚上用故障。
 
 ## 10. 用脚本控制
 
@@ -96,14 +104,26 @@ binds {
 
 ## 排查
 
-**窗口关闭的样子和以前一样。** 缺了第 3 步里的 include 行，或者“关闭动画”设成了“niri 默认”。用 `ls ~/.config/niri/windowfx.kdl` 可以看出插件有没有写出它的文件。
+### 窗口关闭的样子和以前一样
 
-**config.kdl 里我自己的动画占了上风。** include 行在你的 `animations` 块上面。把它移到文件末尾。
+缺了第 3 步里的 include 行，或者“关闭动画”设成了“niri 默认”。用 `ls ~/.config/niri/windowfx.kdl` 可以看出插件有没有写出它的文件。
 
-**niri 报出一个提到 `hold-layout` 的配置错误。** niri 被换成了没有这个选项的版本，而文件里还留着之前写的选项。DMS 一运行，插件就会重新检查，写出不带这个选项的文件；niri 会自己重新读取。
+### config.kdl 里我自己的动画占了上风
 
-**“相邻窗口等待”没有出现。** 装着的 niri 不认识 `hold-layout`。换成认识它的 niri 后，下次启动 DMS 时开关就会出现。
+include 行在你的 `animations` 块上面。把它移到文件末尾。
 
-**随机总是出同一种效果。** 第 7 步的列表里只打开了一种，或者一种也没开；一种也没开时就用余烬。
+### niri 报出一个提到 `hold-layout` 的配置错误
 
-**关掉插件后动画还在。** 插件会把 `windowfx.kdl` 原样留着。关掉插件之前先把两个动画都设成“niri 默认”，或者删掉这个文件。
+niri 被换成了没有这个选项的版本，而文件里还留着之前写的选项。DMS 一运行，插件就会重新检查，写出不带这个选项的文件；niri 会自己重新读取。
+
+### “相邻窗口等待”没有出现
+
+装着的 niri 不认识 `hold-layout`。换成认识它的 niri 后，下次启动 DMS 时开关就会出现。
+
+### 随机总是出同一种效果
+
+第 7 步的列表里只打开了一种，或者一种也没开；一种也没开时就用余烬。
+
+### 关掉插件后动画还在
+
+插件会把 `windowfx.kdl` 原样留着。关掉插件之前先把两个动画都设成“niri 默认”，或者删掉这个文件。

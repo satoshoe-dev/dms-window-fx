@@ -4,10 +4,16 @@
 
 ## 1. Plugin einbauen
 
-Klone das Repository in deinen DMS-Plugin-Ordner:
+Aus der Plugin-Registry:
 
 ```sh
-git clone https://github.com/21Rebel/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
+dms plugins install windowFx
+```
+
+Oder klone das Repository in deinen DMS-Plugin-Ordner:
+
+```sh
+git clone https://github.com/satoshoe-dev/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
 ```
 
 ## 2. Einschalten
@@ -68,13 +74,15 @@ Zu Beginn sind sechs Arten eingeschaltet: Glut, Scherben, Schmelzen, Signalstör
 
 Schließt sich ein Fenster mitten in einer Reihe, schiebt niri die Fenster rechts davon sofort in die Lücke, und sie rutschen über die Animation, während sie noch läuft. Kennt dein niri die Option `hold-layout`, zeigt die Einstellungsseite den Schalter „Nachbarn warten“. Ist er ein, bleiben die Nachbarn stehen, bis die Schließ-Animation zu Ende ist, und rücken erst dann nach.
 
+`hold-layout` gehört nicht zu niri, die Option stammt aus einem inoffiziellen Patch. Mit dem niri deiner Distribution bleibt der Schalter deshalb verborgen. Alles andere in dieser Anleitung funktioniert ohne ihn.
+
 Probier es an einem Fenster, rechts von dem noch ein weiteres steht; schließt sich das letzte Fenster einer Reihe, rückt nichts nach.
 
 Erscheint der Schalter nicht, hat dein niri die Option nicht. Das Plugin prüft das beim Start, indem es `niri validate` eine winzige Datei lesen lässt, die sie benutzt, und es schreibt die Option nie für ein niri, das sie ablehnen würde.
 
 ## 9. Die Animationen je Profil behalten (nach Wunsch)
 
-Mit dem Plugin [Profiles](https://github.com/21Rebel/dms-profiles) trägst du `windowFx` unter „Im Profil mitgespeicherte Plugins“ ein. Jedes Profil behält dann seine eigenen Animationen, zum Beispiel ruhige für die Arbeit und Signalstörung für den Abend.
+Mit dem Plugin [Profiles](https://github.com/satoshoe-dev/dms-profiles) trägst du `windowFx` unter „Im Profil mitgespeicherte Plugins“ ein. Jedes Profil behält dann seine eigenen Animationen, zum Beispiel ruhige für die Arbeit und Signalstörung für den Abend.
 
 ## 10. Per Skript steuern
 
@@ -96,14 +104,26 @@ binds {
 
 ## Fehlersuche
 
-**Fenster schließen sich wie immer.** Die Include-Zeile aus Schritt 3 fehlt, oder „Animation beim Schließen“ steht auf „niri-Standard“. `ls ~/.config/niri/windowfx.kdl` zeigt, ob das Plugin seine Datei geschrieben hat.
+### Fenster schließen sich wie immer
 
-**Meine eigenen Animationen aus config.kdl setzen sich durch.** Die Include-Zeile steht über deinem `animations`-Block. Verschieb sie ans Ende der Datei.
+Die Include-Zeile aus Schritt 3 fehlt, oder „Animation beim Schließen“ steht auf „niri-Standard“. `ls ~/.config/niri/windowfx.kdl` zeigt, ob das Plugin seine Datei geschrieben hat.
 
-**niri meldet einen Konfigurationsfehler, in dem `hold-layout` vorkommt.** niri wurde durch eines ohne die Option ersetzt, und die Datei enthält sie noch von vorher. Sobald DMS läuft, prüft das Plugin erneut und schreibt die Datei ohne sie; niri lädt von selbst neu.
+### Meine eigenen Animationen aus config.kdl setzen sich durch
 
-**„Nachbarn warten“ erscheint nicht.** Das installierte niri kennt `hold-layout` nicht. Sobald es das tut, taucht der Schalter nach dem nächsten Start von DMS auf.
+Die Include-Zeile steht über deinem `animations`-Block. Verschieb sie ans Ende der Datei.
 
-**Der Zufall zeigt immer dieselbe Art.** In der Liste aus Schritt 7 ist nur eine Art eingeschaltet oder gar keine; dann wird Glut genommen.
+### niri meldet einen Konfigurationsfehler, in dem `hold-layout` vorkommt
 
-**Die Animationen bleiben, nachdem ich das Plugin abgeschaltet habe.** Das Plugin lässt `windowfx.kdl` liegen. Stell beide Animationen auf „niri-Standard“, bevor du es abschaltest, oder lösche die Datei.
+niri wurde durch eines ohne die Option ersetzt, und die Datei enthält sie noch von vorher. Sobald DMS läuft, prüft das Plugin erneut und schreibt die Datei ohne sie; niri lädt von selbst neu.
+
+### „Nachbarn warten“ erscheint nicht
+
+Das installierte niri kennt `hold-layout` nicht. Sobald es das tut, taucht der Schalter nach dem nächsten Start von DMS auf.
+
+### Der Zufall zeigt immer dieselbe Art
+
+In der Liste aus Schritt 7 ist nur eine Art eingeschaltet oder gar keine; dann wird Glut genommen.
+
+### Die Animationen bleiben, nachdem ich das Plugin abgeschaltet habe
+
+Das Plugin lässt `windowfx.kdl` liegen. Stell beide Animationen auf „niri-Standard“, bevor du es abschaltest, oder lösche die Datei.

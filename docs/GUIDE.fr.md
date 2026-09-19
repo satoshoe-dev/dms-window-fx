@@ -4,10 +4,16 @@
 
 ## 1. Installer le plugin
 
-Clone le dépôt dans ton dossier de plugins DMS :
+Depuis le registre des plugins :
 
 ```sh
-git clone https://github.com/21Rebel/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
+dms plugins install windowFx
+```
+
+Ou clone le dépôt dans ton dossier de plugins DMS :
+
+```sh
+git clone https://github.com/satoshoe-dev/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
 ```
 
 ## 2. L'activer
@@ -68,13 +74,15 @@ Six animations sont actives au départ : Braise, Éclats, Fonte, Glitch, Tube é
 
 Quand une fenêtre au milieu d'une rangée se ferme, niri déplace aussitôt les fenêtres à sa droite dans le vide, et elles glissent par-dessus l'animation pendant qu'elle tourne encore. Si ton niri connaît l'option `hold-layout`, la page de paramètres montre l'interrupteur « Les voisines attendent ». Activé, les voisines restent en place jusqu'à la fin de l'animation de fermeture, et ne se déplacent qu'ensuite.
 
+`hold-layout` ne fait pas partie de niri ; l'option vient d'un patch non officiel. Avec le niri de ta distribution, l'interrupteur reste donc caché. Tout le reste de ce guide fonctionne sans lui.
+
 Essaie sur une fenêtre qui en a une autre à sa droite ; quand la dernière fenêtre d'une rangée se ferme, rien ne vient combler le vide.
 
 Si l'interrupteur n'apparaît pas, ton niri n'a pas l'option. Le plugin le vérifie au démarrage en faisant lire à `niri validate` un petit fichier qui l'utilise, et il n'écrit jamais l'option pour un niri qui la rejetterait.
 
 ## 9. Garder les animations par profil (facultatif)
 
-Avec le plugin [Profiles](https://github.com/21Rebel/dms-profiles), saisis `windowFx` sous « Plugins enregistrés avec le profil ». Chaque profil garde alors ses propres animations, par exemple des calmes pour le travail et Glitch pour le soir.
+Avec le plugin [Profiles](https://github.com/satoshoe-dev/dms-profiles), saisis `windowFx` sous « Plugins enregistrés avec le profil ». Chaque profil garde alors ses propres animations, par exemple des calmes pour le travail et Glitch pour le soir.
 
 ## 10. Le piloter par script
 
@@ -96,14 +104,26 @@ binds {
 
 ## Dépannage
 
-**Les fenêtres se ferment toujours comme avant.** La ligne include de l'étape 3 manque, ou « Animation de fermeture » est sur « Par défaut de niri ». `ls ~/.config/niri/windowfx.kdl` montre si le plugin a écrit son fichier.
+### Les fenêtres se ferment toujours comme avant
 
-**Mes propres animations dans config.kdl l'emportent.** La ligne include est au-dessus de ton bloc `animations`. Déplace-la à la fin du fichier.
+La ligne include de l'étape 3 manque, ou « Animation de fermeture » est sur « Par défaut de niri ». `ls ~/.config/niri/windowfx.kdl` montre si le plugin a écrit son fichier.
 
-**niri affiche une erreur de configuration qui mentionne `hold-layout`.** niri a été remplacé par un niri sans l'option, et le fichier la contient encore. Dès que DMS tourne, le plugin vérifie de nouveau et réécrit le fichier sans elle ; niri recharge de lui-même.
+### Mes propres animations dans config.kdl l'emportent
 
-**« Les voisines attendent » n'apparaît pas.** Le niri installé ne connaît pas `hold-layout`. L'interrupteur apparaît au prochain démarrage de DMS une fois que c'est le cas.
+La ligne include est au-dessus de ton bloc `animations`. Déplace-la à la fin du fichier.
 
-**Le hasard montre toujours la même animation.** Une seule animation est active dans la liste de l'étape 7, ou aucune ; dans ce cas c'est Braise qui sert.
+### niri affiche une erreur de configuration qui mentionne `hold-layout`
 
-**Les animations restent après avoir désactivé le plugin.** Le plugin laisse `windowfx.kdl` en place. Mets les deux animations sur « Par défaut de niri » avant de le désactiver, ou supprime le fichier.
+niri a été remplacé par un niri sans l'option, et le fichier la contient encore. Dès que DMS tourne, le plugin vérifie de nouveau et réécrit le fichier sans elle ; niri recharge de lui-même.
+
+### « Les voisines attendent » n'apparaît pas
+
+Le niri installé ne connaît pas `hold-layout`. L'interrupteur apparaît au prochain démarrage de DMS une fois que c'est le cas.
+
+### Le hasard montre toujours la même animation
+
+Une seule animation est active dans la liste de l'étape 7, ou aucune ; dans ce cas c'est Braise qui sert.
+
+### Les animations restent après avoir désactivé le plugin
+
+Le plugin laisse `windowfx.kdl` en place. Mets les deux animations sur « Par défaut de niri » avant de le désactiver, ou supprime le fichier.

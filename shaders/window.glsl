@@ -1,11 +1,11 @@
-// WindowFX: close and open animations for niri, written by the WindowFX plugin.
+// Window FX: close and open animations for niri, filled in by the Window FX plugin.
 //
 // niri runs this over the whole screen while a closed window disappears, or
 // while a new one appears. Opening plays the same kind backwards: the plugin
-// fills in open_color and a reversed progress. The
-// window texture is premultiplied, and so is the result. coords_geo is 0..1
-// inside the window; the shards and the melt may leave the window downwards,
-// every other kind stays inside it.
+// fills in open_color and a reversed progress. The window texture is
+// premultiplied, and so is the result. coords_geo is 0..1 inside the window;
+// the shards and the melt may leave the window downwards, every other kind
+// stays inside it.
 //
 //  1 ember      2 dissolve   3 pixel      4 shatter    5 melt
 //  6 glitch     7 crt        8 snow       9 scan      10 code

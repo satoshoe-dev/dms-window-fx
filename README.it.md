@@ -34,11 +34,11 @@ Ci sono 13 animazioni:
 
 "Bordi luminosi" fa illuminare bordi, crepe e giunture nel colore di accento di DMS. Quando l'accento cambia, il plugin riscrive il file. Tubo spento fa sempre un lampo bianco, con o senza questa impostazione.
 
-Se usi il plugin [Profiles](https://github.com/21Rebel/dms-profiles), inserisci `windowFx` in Impostazioni → Plugin → Profiles → Plugin salvati con il profilo, e ogni profilo tiene le sue animazioni.
+Se usi il plugin [Profiles](https://github.com/satoshoe-dev/dms-profiles), inserisci `windowFx` in Impostazioni → Plugin → Profiles → Plugin salvati con il profilo, e ogni profilo tiene le sue animazioni.
 
 ## Requisiti
 
-DankMaterialShell 1.6.1 o più recente e niri 26.04 o più recente.
+DankMaterialShell 1.6.1 o più recente e niri 26.04 o più recente. La versione di niri serve per la riga include qui sotto: niri conosce `optional=true` dalla 26.04.
 
 Il plugin scrive solo il proprio file. niri lo legge quando la tua configurazione di niri lo include, quindi aggiungi questa riga alla fine di `~/.config/niri/config.kdl`:
 
@@ -48,10 +48,21 @@ include optional=true "windowfx.kdl"
 
 Alla fine, perché un include sovrascrive ciò che viene prima; così le animazioni del plugin prevalgono su quelle della tua configurazione principale.
 
+"Le vicine aspettano" richiede in più un niri con una patch non ufficiale, vedi più sotto la sezione "Le vicine aspettano". Tutto il resto funziona con un niri normale.
+
 ## Installazione
 
+Dal registro dei plugin:
+
 ```sh
-git clone https://github.com/21Rebel/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
+dms plugins install windowFx
+dms ipc call plugins enable windowFx
+```
+
+Si trova anche in DMS in Impostazioni → Plugin → Sfoglia. Per installarlo dal repository:
+
+```sh
+git clone https://github.com/satoshoe-dev/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
 dms ipc call plugins enable windowFx
 ```
 
@@ -95,7 +106,7 @@ binds {
 
 Quando una finestra si chiude, niri la toglie subito dal layout. Le finestre accanto cominciano subito a occupare lo spazio e scivolano sopra la finestra che si chiude mentre la sua animazione è ancora in corso. Con una breve dissolvenza si nota appena; con un bordo che brucia o frammenti che cadono, la vicina ne copre gran parte.
 
-La patch che cambia questo è piccola: una nuova opzione `hold-layout` in `window-close`. Con essa, tutto ciò che la rimozione mette in moto (le vicine che scivolano, la vista che scorre, le colonne che cambiano misura) parte solo quando l'animazione di chiusura è finita. È proposta a niri come pull request.
+Ho scritto una piccola patch per niri che aggiunge l'opzione `hold-layout` a `window-close`. Con essa, tutto ciò che la rimozione mette in moto (le vicine che scivolano, la vista che scorre, le colonne che cambiano misura) parte solo quando l'animazione di chiusura è finita. La patch non fa parte di niri, e il niri della tua distribuzione non conosce l'opzione. Senza un niri compilato con questa patch, "Le vicine aspettano" non ha effetto.
 
 All'avvio il plugin controlla se il niri installato conosce l'opzione, facendo leggere a `niri validate` un file minuscolo che la usa. Se niri la conosce, nella pagina delle impostazioni compare l'interruttore "Le vicine aspettano"; altrimenti resta nascosto e il plugin non scrive mai l'opzione, perché un niri standard rifiuterebbe l'intero file.
 

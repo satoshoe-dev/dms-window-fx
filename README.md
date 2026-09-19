@@ -34,11 +34,11 @@ There are 13 kinds:
 
 "Glowing edges" lets edges, cracks and seams light up in the accent color of DMS. When the accent changes, the plugin writes the file again. Tube off always flashes white, with or without the setting.
 
-If you use the [Profiles](https://github.com/21Rebel/dms-profiles) plugin, enter `windowFx` under Settings → Plugins → Profiles → Plugins saved with a profile, and every profile keeps its own animations.
+If you use the [Profiles](https://github.com/satoshoe-dev/dms-profiles) plugin, enter `windowFx` under Settings → Plugins → Profiles → Plugins saved with a profile, and every profile keeps its own animations.
 
 ## Requirements
 
-DankMaterialShell 1.6.1 or newer and niri 26.04 or newer.
+DankMaterialShell 1.6.1 or newer and niri 26.04 or newer. The niri version matters for the include line below: niri knows `optional=true` since 26.04.
 
 The plugin only writes its own file. niri reads it once your niri config includes it, so add this line at the end of `~/.config/niri/config.kdl`:
 
@@ -48,10 +48,21 @@ include optional=true "windowfx.kdl"
 
 At the end, because an include overrides what comes before it; that way the plugin's animations win over the ones in your main config.
 
+"Neighbours wait" also needs a niri built with an unofficial patch, see [Neighbours wait](#neighbours-wait). Everything else works with a stock niri.
+
 ## Installation
 
+From the plugin registry:
+
 ```sh
-git clone https://github.com/21Rebel/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
+dms plugins install windowFx
+dms ipc call plugins enable windowFx
+```
+
+It is also listed in DMS under Settings → Plugins → Browse. To install from the repository instead:
+
+```sh
+git clone https://github.com/satoshoe-dev/dms-window-fx ~/.config/DankMaterialShell/plugins/WindowFx
 dms ipc call plugins enable windowFx
 ```
 
@@ -95,7 +106,7 @@ binds {
 
 When a window closes, niri takes it out of the layout right away. The windows next to it start moving into the gap at once and slide over the closing window while its animation is still running. With a short fade that hardly shows; with a burning edge or falling shards the neighbour covers most of it.
 
-The patch that changes this is small: a new option `hold-layout` in `window-close`. With it, everything the removal sets in motion (neighbours sliding in, the view scrolling, columns resizing) starts only when the close animation has ended. It is offered to niri as a pull request.
+I wrote a small patch for niri that adds the option `hold-layout` to `window-close`. With it, everything the removal sets in motion (neighbours sliding in, the view scrolling, columns resizing) starts only when the close animation has ended. The patch is not part of niri, and the niri from your distribution does not know the option. Without a niri built with this patch, "Neighbours wait" has no effect.
 
 The plugin checks at start whether the installed niri knows the option, by letting `niri validate` read a tiny file that uses it. If niri knows it, the switch "Neighbours wait" appears on the settings page; if not, it stays hidden and the plugin never writes the option, because a stock niri would reject the whole file.
 
