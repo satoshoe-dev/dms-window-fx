@@ -18,7 +18,7 @@ git clone https://github.com/satoshoe-dev/dms-window-fx ~/.config/DankMaterialSh
 
 ## 2. Ativá-lo
 
-Abre Definições → Plugins. O Window FX aparece na lista. Liga-o.
+Abre Configurações → Plugins. O Window FX aparece na lista. Liga-o.
 
 ![Lista de plugins com o Window FX](images/01-plugin-list.png)
 

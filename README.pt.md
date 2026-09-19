@@ -34,7 +34,7 @@ Há 13 tipos:
 
 "Bordas luminosas" faz com que as bordas, as fissuras e as juntas se acendam na cor de destaque do DMS. Quando a cor de destaque muda, o plugin volta a escrever o ficheiro. O Tubo desligado dá sempre um clarão branco, com ou sem a definição.
 
-Se usas o plugin [Profiles](https://github.com/satoshoe-dev/dms-profiles), escreve `windowFx` em Definições → Plugins → Profiles → Plugins salvos com o perfil, e cada perfil guarda as suas próprias animações.
+Se usas o plugin [Profiles](https://github.com/satoshoe-dev/dms-profiles), escreve `windowFx` em Configurações → Plugins → Profiles → Plugins salvos com o perfil, e cada perfil guarda as suas próprias animações.
 
 ## Requisitos
 
@@ -66,11 +66,11 @@ git clone https://github.com/satoshoe-dev/dms-window-fx ~/.config/DankMaterialSh
 dms ipc call plugins enable windowFx
 ```
 
-Depois escolhe uma animação ao fechar em Definições → Plugins → Window FX. Até lá, o niri mantém as suas próprias animações.
+Depois escolhe uma animação ao fechar em Configurações → Plugins → Window FX. Até lá, o niri mantém as suas próprias animações.
 
 ## Definições
 
-Definições → Plugins → Window FX
+Configurações → Plugins → Window FX
 
 | Definição | Predefinição |
 |---|---|
