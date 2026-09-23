@@ -104,7 +104,7 @@ binds {
 
 ## Las vecinas esperan
 
-Cuando se cierra una ventana, niri la saca del diseño enseguida. Las ventanas de al lado empiezan a moverse hacia el hueco al momento y se deslizan sobre la ventana que se cierra mientras su animación sigue en marcha. Con un fundido corto casi no se nota; con un borde en llamas o con añicos que caen, la vecina tapa casi todo.
+Cuando se cierra una ventana, niri la saca del diseño enseguida. Las ventanas de al lado empiezan a moverse hacia el hueco al momento, mientras la animación de cierre se sigue dibujando por encima. Con un fundido corto casi no se nota; con un borde en llamas o con añicos que caen, el efecto se ve sobre una ventana que se desliza por debajo, y los dos se mezclan.
 
 Escribí un pequeño parche para niri que añade la opción `hold-layout` a `window-close`. Con ella, todo lo que pone en marcha la retirada (las vecinas que se desplazan, la vista que se mueve, las columnas que cambian de tamaño) empieza solo cuando la animación de cierre ha terminado. El parche no forma parte de niri, y el niri de tu distribución no conoce la opción. Sin un niri compilado con este parche, «Las vecinas esperan» no tiene efecto.
 

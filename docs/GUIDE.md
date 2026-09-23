@@ -72,7 +72,7 @@ Six kinds are on at the start: Ember, Shatter, Melt, Glitch, Tube off and Code r
 
 ## 8. Neighbours wait (niri with hold-layout)
 
-When a window in the middle of a row closes, niri moves the windows to its right into the gap right away, and they slide over the animation while it is still running. If your niri knows the option `hold-layout`, the settings page shows the switch "Neighbours wait". With it on, the neighbours stay where they are until the close animation has ended, and only then move over.
+When a window in the middle of a row closes, niri moves the windows to its right into the gap right away, and they slide in underneath the animation while it is still running. If your niri knows the option `hold-layout`, the settings page shows the switch "Neighbours wait". With it on, the neighbours stay where they are until the close animation has ended, and only then move over.
 
 `hold-layout` is not part of niri. It comes from an unofficial patch, so with the niri from your distribution the switch stays hidden. Everything else in this guide works without it.
 

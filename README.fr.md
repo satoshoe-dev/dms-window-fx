@@ -104,7 +104,7 @@ binds {
 
 ## Les voisines attendent
 
-Quand une fenêtre se ferme, niri la retire aussitôt de la disposition. Les fenêtres voisines commencent tout de suite à combler le vide et glissent par-dessus la fenêtre qui se ferme pendant que son animation tourne encore. Avec un court fondu, ça se voit à peine ; avec un bord qui brûle ou des éclats qui tombent, la voisine en cache la plus grande partie.
+Quand une fenêtre se ferme, niri la retire aussitôt de la disposition. Les fenêtres voisines commencent tout de suite à combler le vide, pendant que l’animation de fermeture est encore dessinée par-dessus. Avec un court fondu, ça se voit à peine ; avec un bord qui brûle ou des éclats qui tombent, l’effet se joue au-dessus d’une fenêtre qui glisse en dessous, et les deux se mélangent.
 
 J’ai écrit un petit patch pour niri qui ajoute l’option `hold-layout` à `window-close`. Avec elle, tout ce que le retrait met en mouvement (les voisines qui glissent, la vue qui défile, les colonnes qui changent de taille) ne démarre qu’une fois l’animation de fermeture terminée. Le patch ne fait pas partie de niri, et le niri de votre distribution ne connaît pas l’option. Sans un niri compilé avec ce patch, « Les voisines attendent » n’a aucun effet.
 

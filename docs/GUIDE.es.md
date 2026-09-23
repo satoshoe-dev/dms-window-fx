@@ -72,7 +72,7 @@ Al principio hay seis tipos activados: Brasas, Añicos, Derretir, Fallo de seña
 
 ## 8. Las vecinas esperan (niri con hold-layout)
 
-Cuando se cierra una ventana en medio de una fila, niri mueve enseguida las ventanas de su derecha hacia el hueco, y estas se deslizan sobre la animación mientras sigue en marcha. Si tu niri conoce la opción `hold-layout`, la página de ajustes muestra el interruptor «Las vecinas esperan». Con él activado, las vecinas se quedan donde están hasta que termina la animación de cierre, y solo entonces se desplazan.
+Cuando se cierra una ventana en medio de una fila, niri mueve enseguida las ventanas de su derecha hacia el hueco, y estas se deslizan por debajo de la animación mientras sigue en marcha. Si tu niri conoce la opción `hold-layout`, la página de ajustes muestra el interruptor «Las vecinas esperan». Con él activado, las vecinas se quedan donde están hasta que termina la animación de cierre, y solo entonces se desplazan.
 
 `hold-layout` no forma parte de niri; la opción viene de un parche no oficial. Con el niri de tu distribución el interruptor queda oculto. Todo lo demás de esta guía funciona sin él.
 

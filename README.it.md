@@ -104,7 +104,7 @@ binds {
 
 ## Le vicine aspettano
 
-Quando una finestra si chiude, niri la toglie subito dal layout. Le finestre accanto cominciano subito a occupare lo spazio e scivolano sopra la finestra che si chiude mentre la sua animazione è ancora in corso. Con una breve dissolvenza si nota appena; con un bordo che brucia o frammenti che cadono, la vicina ne copre gran parte.
+Quando una finestra si chiude, niri la toglie subito dal layout. Le finestre accanto cominciano subito a occupare lo spazio, mentre l'animazione di chiusura viene ancora disegnata sopra. Con una breve dissolvenza si nota appena; con un bordo che brucia o frammenti che cadono, l'effetto si svolge sopra una finestra che scivola sotto, e i due si confondono.
 
 Ho scritto una piccola patch per niri che aggiunge l'opzione `hold-layout` a `window-close`. Con essa, tutto ciò che la rimozione mette in moto (le vicine che scivolano, la vista che scorre, le colonne che cambiano misura) parte solo quando l'animazione di chiusura è finita. La patch non fa parte di niri, e il niri della tua distribuzione non conosce l'opzione. Senza un niri compilato con questa patch, "Le vicine aspettano" non ha effetto.
 

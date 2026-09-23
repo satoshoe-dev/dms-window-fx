@@ -72,7 +72,7 @@ All'inizio sono accese sei animazioni: Brace, Frantumi, Scioglimento, Glitch, Tu
 
 ## 8. Le vicine aspettano (niri con hold-layout)
 
-Quando si chiude una finestra in mezzo a una fila, niri sposta subito nello spazio libero le finestre alla sua destra, e queste scivolano sopra l'animazione mentre è ancora in corso. Se il tuo niri conosce l'opzione `hold-layout`, la pagina delle impostazioni mostra l'interruttore "Le vicine aspettano". Se è acceso, le vicine restano dove sono finché l'animazione di chiusura non è finita, e solo dopo si spostano.
+Quando si chiude una finestra in mezzo a una fila, niri sposta subito nello spazio libero le finestre alla sua destra, e queste scivolano sotto l'animazione mentre è ancora in corso. Se il tuo niri conosce l'opzione `hold-layout`, la pagina delle impostazioni mostra l'interruttore "Le vicine aspettano". Se è acceso, le vicine restano dove sono finché l'animazione di chiusura non è finita, e solo dopo si spostano.
 
 `hold-layout` non fa parte di niri; l'opzione viene da una patch non ufficiale. Con il niri della tua distribuzione l'interruttore resta quindi nascosto. Tutto il resto di questa guida funziona anche senza.
 

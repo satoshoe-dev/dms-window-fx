@@ -72,7 +72,7 @@ Zu Beginn sind sechs Arten eingeschaltet: Glut, Scherben, Schmelzen, Signalstör
 
 ## 8. Nachbarn warten (niri mit hold-layout)
 
-Schließt sich ein Fenster mitten in einer Reihe, schiebt niri die Fenster rechts davon sofort in die Lücke, und sie rutschen über die Animation, während sie noch läuft. Kennt dein niri die Option `hold-layout`, zeigt die Einstellungsseite den Schalter „Nachbarn warten“. Ist er ein, bleiben die Nachbarn stehen, bis die Schließ-Animation zu Ende ist, und rücken erst dann nach.
+Schließt sich ein Fenster mitten in einer Reihe, schiebt niri die Fenster rechts davon sofort in die Lücke, und sie rutschen unter der Animation hindurch, während sie noch läuft. Kennt dein niri die Option `hold-layout`, zeigt die Einstellungsseite den Schalter „Nachbarn warten“. Ist er ein, bleiben die Nachbarn stehen, bis die Schließ-Animation zu Ende ist, und rücken erst dann nach.
 
 `hold-layout` gehört nicht zu niri, die Option stammt aus einem inoffiziellen Patch. Mit dem niri deiner Distribution bleibt der Schalter deshalb verborgen. Alles andere in dieser Anleitung funktioniert ohne ihn.
 

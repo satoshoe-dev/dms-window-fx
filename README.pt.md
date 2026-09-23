@@ -104,7 +104,7 @@ binds {
 
 ## As vizinhas esperam
 
-Quando uma janela fecha, o niri a tira imediatamente do layout. As janelas ao lado começam na hora a se mover para o espaço livre e deslizam por cima da janela que está fechando enquanto a animação ainda roda. Com um fade curto quase não se percebe; com uma borda em chamas ou estilhaços caindo, a vizinha cobre quase tudo.
+Quando uma janela fecha, o niri a tira imediatamente do layout. As janelas ao lado começam na hora a se mover para o espaço livre, enquanto a animação de fechamento ainda é desenhada por cima. Com um fade curto quase não se percebe; com uma borda em chamas ou estilhaços caindo, o efeito acontece sobre uma janela que desliza por baixo, e os dois se misturam.
 
 Escrevi um pequeno patch para o niri que acrescenta a opção `hold-layout` a `window-close`. Com ela, tudo o que a remoção coloca em movimento (as vizinhas que deslizam, a visualização que rola, as colunas que mudam de tamanho) só começa depois que a animação de fechamento termina. O patch não faz parte do niri, e o niri da sua distribuição não conhece a opção. Sem um niri compilado com esse patch, "As vizinhas esperam" não tem efeito.
 

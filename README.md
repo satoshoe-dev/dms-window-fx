@@ -104,7 +104,7 @@ binds {
 
 ## Neighbours wait
 
-When a window closes, niri takes it out of the layout right away. The windows next to it start moving into the gap at once and slide over the closing window while its animation is still running. With a short fade that hardly shows; with a burning edge or falling shards the neighbour covers most of it.
+When a window closes, niri takes it out of the layout right away. The windows next to it start moving into the gap at once, while the close animation is still drawn on top. With a short fade that hardly shows; with a burning edge or falling shards the effect plays over a window that slides in underneath, and the two run into each other.
 
 I wrote a small patch for niri that adds the option `hold-layout` to `window-close`. With it, everything the removal sets in motion (neighbours sliding in, the view scrolling, columns resizing) starts only when the close animation has ended. The patch is not part of niri, and the niri from your distribution does not know the option. Without a niri built with this patch, "Neighbours wait" has no effect.
 

@@ -72,7 +72,7 @@ No início há seis tipos ativados: Brasas, Estilhaçar, Derreter, Falha de sina
 
 ## 8. As vizinhas esperam (niri com hold-layout)
 
-Quando uma janela no meio de uma fileira fecha, o niri move na hora as janelas à direita dela para o espaço livre, e elas deslizam por cima da animação enquanto ela ainda roda. Se o seu niri conhecer a opção `hold-layout`, a página de configurações mostra o interruptor "As vizinhas esperam". Com ele ativado, as vizinhas ficam onde estão até a animação de fechamento terminar, e só então avançam.
+Quando uma janela no meio de uma fileira fecha, o niri move na hora as janelas à direita dela para o espaço livre, e elas deslizam por baixo da animação enquanto ela ainda roda. Se o seu niri conhecer a opção `hold-layout`, a página de configurações mostra o interruptor "As vizinhas esperam". Com ele ativado, as vizinhas ficam onde estão até a animação de fechamento terminar, e só então avançam.
 
 `hold-layout` não faz parte do niri; a opção vem de um patch não oficial. Por isso, com o niri da sua distribuição, o interruptor fica escondido. Todo o resto deste guia funciona sem ele.
 

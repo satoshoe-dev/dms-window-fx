@@ -72,7 +72,7 @@ Six animations sont actives au départ : Braise, Éclats, Fonte, Glitch, Tube é
 
 ## 8. Les voisines attendent (niri avec hold-layout)
 
-Quand une fenêtre au milieu d’une rangée se ferme, niri déplace aussitôt les fenêtres à sa droite dans le vide, et elles glissent par-dessus l’animation pendant qu’elle tourne encore. Si votre niri connaît l’option `hold-layout`, la page de paramètres montre l’interrupteur « Les voisines attendent ». Activé, les voisines restent en place jusqu’à la fin de l’animation de fermeture, et ne se déplacent qu’ensuite.
+Quand une fenêtre au milieu d’une rangée se ferme, niri déplace aussitôt les fenêtres à sa droite dans le vide, et elles glissent sous l’animation pendant qu’elle tourne encore. Si votre niri connaît l’option `hold-layout`, la page de paramètres montre l’interrupteur « Les voisines attendent ». Activé, les voisines restent en place jusqu’à la fin de l’animation de fermeture, et ne se déplacent qu’ensuite.
 
 `hold-layout` ne fait pas partie de niri ; l’option vient d’un patch non officiel. Avec le niri de votre distribution, l’interrupteur reste donc caché. Tout le reste de ce guide fonctionne sans lui.
 

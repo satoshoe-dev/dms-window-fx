@@ -104,7 +104,7 @@ binds {
 
 ## Nachbarn warten
 
-Wenn ein Fenster sich schließt, nimmt niri es sofort aus dem Layout. Die Fenster daneben rücken gleich in die Lücke und schieben sich über das schließende Fenster, während seine Animation noch läuft. Bei einem kurzen Ausblenden fällt das kaum auf; bei einer brennenden Kante oder fallenden Scherben deckt der Nachbar das meiste davon zu.
+Wenn ein Fenster sich schließt, nimmt niri es sofort aus dem Layout. Die Fenster daneben rücken gleich in die Lücke, während die Schließ-Animation noch darüber gezeichnet wird. Bei einem kurzen Ausblenden fällt das kaum auf; bei einer brennenden Kante oder fallenden Scherben läuft der Effekt über einem Fenster ab, das darunter hineingleitet, und beides verschwimmt.
 
 Ich habe dafür einen kleinen Patch für niri geschrieben, der `window-close` um die Option `hold-layout` ergänzt. Mit ihr beginnt alles, was das Entfernen in Gang setzt (Nachbarn rücken nach, die Ansicht scrollt, Spalten ändern ihre Größe), erst dann, wenn die Schließ-Animation zu Ende ist. Der Patch gehört nicht zu niri, und das niri deiner Distribution kennt die Option nicht. Ohne ein niri, das mit diesem Patch gebaut ist, bewirkt „Nachbarn warten“ nichts.
 
