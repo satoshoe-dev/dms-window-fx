@@ -38,7 +38,7 @@ If you use the [Profiles](https://github.com/satoshoe-dev/dms-profiles) plugin, 
 
 ## Requirements
 
-DankMaterialShell 1.6.1 or newer and niri 26.04 or newer. The niri version matters for the include line below: niri knows `optional=true` since 26.04.
+DankMaterialShell 1.6.1 or newer (tested with 1.6.2 and 2.0.0) and niri 26.04 or newer. The niri version matters for the include line below: niri knows `optional=true` since 26.04.
 
 The plugin only writes its own file. niri reads it once your niri config includes it, so add this line at the end of `~/.config/niri/config.kdl`:
 
